@@ -938,14 +938,31 @@ const DRAFT_KEY = "portfolioDraft_v1";
 
 let CONFIG = DEFAULT_CONFIG;
 if (window.SITE_CONTENT && typeof window.SITE_CONTENT === "object") CONFIG = window.SITE_CONTENT;
-CONFIG.admin = Object.assign({ passwordHash: "", sessionMinutes: 120 }, CONFIG.admin || {});
+
+/* «Отпечаток» опубликованного контента — чтобы отличать устаревший черновик от актуального */
+function fp(o){ try { return JSON.stringify(o); } catch(e){ return ""; } }
+const publishedFP = fp(window.SITE_CONTENT && typeof window.SITE_CONTENT === "object" ? window.SITE_CONTENT : DEFAULT_CONFIG);
+let currentBase = publishedFP;
+
 if (EDIT_MODE) {
   try {
-    const draft = localStorage.getItem(DRAFT_KEY);
-    if (draft) CONFIG = JSON.parse(draft);
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      const draftCfg = (parsed && typeof parsed === "object" && parsed.config) ? parsed.config : parsed;
+      const draftBase = (parsed && typeof parsed === "object" && "base" in parsed) ? parsed.base : null;
+      if (draftBase === publishedFP) {
+        CONFIG = draftCfg; // черновик основан на текущем контенте сайта — открываем его
+      } else if (confirm("Содержимое сайта (content.js) и черновик редактора в этом браузере различаются.\n\nОК — открыть актуальное содержимое сайта (черновик удалится)\n«Отмена» — открыть ваш черновик")) {
+        localStorage.removeItem(DRAFT_KEY);
+      } else {
+        CONFIG = draftCfg;
+      }
+    }
   } catch(e){}
   document.addEventListener("DOMContentLoaded", () => document.body.classList.add("edit"));
 }
+CONFIG.admin = Object.assign({ passwordHash: "", sessionMinutes: 120 }, CONFIG.admin || {});
 
 const $ = (s, p = document) => p.querySelector(s);
 const $$ = (s, p = document) => [...p.querySelectorAll(s)];
@@ -1223,9 +1240,14 @@ if (EDIT_MODE) {
     renderTimer = setTimeout(() => { render(); }, 180);
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
-      try { localStorage.setItem(DRAFT_KEY, JSON.stringify(CONFIG)); }
+      try { localStorage.setItem(DRAFT_KEY, JSON.stringify({ base: currentBase, config: CONFIG })); }
       catch(e){ toast("⚠️ Черновик не помещается в память браузера (скорее всего, из-за большого фото). Скачайте content.js!"); }
     }, 400);
+  }
+  function syncDraftBase(){
+    // после успешного сохранения на сайт/в файл черновик считается синхронизированным
+    currentBase = fp(CONFIG);
+    try { localStorage.setItem(DRAFT_KEY, JSON.stringify({ base: currentBase, config: CONFIG })); } catch(e){}
   }
   function toast(msg){
     const t = $("#ed-saved");
@@ -1412,6 +1434,7 @@ if (EDIT_MODE) {
             localStorage.setItem(GH_REPO_KEY, rep.value.trim());
             localStorage.setItem(GH_BRANCH_KEY, br.value.trim() || "main");
           } catch(e){}
+          syncDraftBase();
           status.textContent = "✅ Сохранено! Сайт обновится через 1–2 минуты (открывайте с Ctrl+F5).";
           toast("☁️ Изменения сохранены на сайте!");
         } catch(err){
@@ -1670,6 +1693,7 @@ if (EDIT_MODE) {
     a.download = "content.js";
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    syncDraftBase();
     toast("💾 content.js скачан! Положите его рядом с index.html");
   }
 
