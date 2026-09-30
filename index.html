@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Руслан Мороз — SMM-менеджер, контент-маркетолог, копирайтер</title>
+<meta name="description" content="Портфолио контент-маркетолога и копирайтера Руслана Мороза: посты, статьи, сценарии роликов и кейсы для проектов в сфере недвижимости.">
+
+<style>
+/* ============================================================
+   ДИЗАЙН-СИСТЕМА (основные цвета задаются в CONFIG.design,
+   а также меняются прямо в визуальном редакторе)
+   ============================================================ */
+:root{
+  --accent: #7c6cf0;
+  --accent-2: #4ecdc4;
+  --accent-grad: linear-gradient(135deg, #7c6cf0 0%, #4ecdc4 100%);
+
+  --bg: #0b0d14;
+  --bg-soft: #11141f;
+  --card: #151926;
+  --card-hover: #1a1f30;
+  --border: rgba(255,255,255,.08);
+  --border-strong: rgba(255,255,255,.16);
+  --text: #eef0f6;
+  --text-muted: #9aa1b5;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --container: 1120px;
+  --font: "Manrope", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+html[data-theme="light"]{
+  --bg: #f6f7fb;
+  --bg-soft: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f2f3fa;
+  --border: rgba(16,20,40,.09);
+  --border-strong: rgba(16,20,40,.18);
+  --text: #171a26;
+  --text-muted: #5d6478;
+  --shadow: 0 20px 50px rgba(23,26,38,.10);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  transition:background .35s ease, color .35s ease;
+  overflow-x:hidden;
+}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+section{padding:88px 0;position:relative}
+
+/* ---------- Фоновые «пятна» ---------- */
+.glow{position:fixed;border-radius:50%;filter:blur(120px);opacity:.16;pointer-events:none;z-index:0}
+.glow-1{width:520px;height:520px;background:var(--accent);top:-160px;left:-140px}
+.glow-2{width:460px;height:460px;background:var(--accent-2);bottom:-160px;right:-120px}
+html[data-theme="light"] .glow{opacity:.10}
+
+/* ---------- Шапка ---------- */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  background:color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s, box-shadow .3s;
+}
+.header.scrolled{border-bottom-color:var(--border);box-shadow:0 8px 30px rgba(0,0,0,.12)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:var(--accent-grad);flex:none}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{
+  padding:8px 14px;border-radius:99px;font-size:14.5px;font-weight:600;
+  color:var(--text-muted);transition:.2s;
+}
+.nav a:hover{color:var(--text);background:var(--card)}
+.nav a.active{color:var(--text);background:var(--card);box-shadow:inset 0 0 0 1px var(--border)}
+.header-actions{display:flex;align-items:center;gap:10px}
+.theme-btn,.burger{
+  width:40px;height:40px;border-radius:12px;border:1px solid var(--border);
+  background:var(--card);color:var(--text);cursor:pointer;font-size:17px;
+  display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.theme-btn:hover,.burger:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+.burger{display:none}
+
+/* ---------- Кнопки ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:99px;font-weight:700;font-size:15px;
+  cursor:pointer;border:none;transition:.25s;font-family:var(--font);
+}
+.btn-primary{background:var(--accent-grad);color:#0b0d14;box-shadow:0 8px 24px rgba(124,108,240,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,108,240,.45)}
+.btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--border-strong);transform:translateY(-2px)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;width:100%}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 16px;border-radius:99px;font-size:13.5px;font-weight:700;
+  background:var(--card);border:1px solid var(--border);color:var(--text-muted);
+  margin-bottom:24px;
+}
+.hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:#3ddc84;position:relative}
+.hero-badge .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:#3ddc84;opacity:.35;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.5}100%{transform:scale(1.6);opacity:0}}
+.hero h1{
+  font-size:clamp(38px,5.6vw,64px);line-height:1.07;letter-spacing:-.03em;font-weight:800;
+  margin-bottom:14px;
+}
+.hero h1 .grad{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-roles{font-size:clamp(16px,2vw,20px);font-weight:700;color:var(--text);margin-bottom:18px;letter-spacing:-.01em}
+.hero-tagline{font-size:clamp(15px,1.7vw,17.5px);color:var(--text-muted);max-width:580px;margin-bottom:32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:10px}
+.fact{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;
+  background:var(--card);border:1px solid var(--border);color:var(--text-muted);
+}
+
+/* ---------- Фото в Hero ---------- */
+.hero-photo{position:relative;display:flex;justify-content:center}
+.photo-blob{
+  position:absolute;inset:-8% -6%;border-radius:50%;
+  background:var(--accent-grad);filter:blur(90px);opacity:.22;z-index:0;
+}
+.photo-frame{
+  position:relative;z-index:1;width:100%;max-width:400px;aspect-ratio:4/5;
+  border-radius:30px;background:var(--accent-grad);padding:4px;
+  box-shadow:var(--shadow);
+}
+.photo-inner{
+  position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;
+  background:var(--card);
+}
+.photo-inner img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:2;
+}
+.photo-mono{
+  position:absolute;inset:0;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  background:
+    radial-gradient(rgba(255,255,255,.055) 1.2px, transparent 1.2px) 0 0/20px 20px,
+    linear-gradient(160deg, color-mix(in srgb, var(--accent) 30%, var(--card)), var(--card) 70%);
+}
+.photo-mono .mono-letters{
+  font-size:clamp(64px,9vw,104px);font-weight:800;letter-spacing:-.03em;line-height:1;
+  background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.photo-mono .mono-hint{
+  font-size:13px;font-weight:600;color:var(--text-muted);
+  padding:7px 14px;border-radius:99px;background:color-mix(in srgb, var(--bg) 60%, transparent);
+  border:1px solid var(--border);display:none;text-align:center;
+}
+body.edit .photo-mono .mono-hint{display:block}
+.photo-chip{
+  position:absolute;z-index:3;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:99px;font-size:13.5px;font-weight:700;
+  background:var(--card);border:1px solid var(--border-strong);color:var(--text);
+  box-shadow:0 12px 30px rgba(0,0,0,.28);backdrop-filter:blur(8px);
+  animation:float 5s ease-in-out infinite;
+}
+.photo-chip.pos-tl{top:22px;left:-22px}
+.photo-chip.pos-tr{top:22px;right:-22px}
+.photo-chip.pos-bl{bottom:26px;left:-22px}
+.photo-chip.pos-br{bottom:26px;right:-22px;animation-delay:2.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ---------- Общие заголовки секций ---------- */
+.section-head{margin-bottom:48px}
+.section-tag{
+  display:inline-block;padding:6px 14px;border-radius:99px;font-size:12.5px;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
+  background:color-mix(in srgb, var(--accent) 12%, transparent);margin-bottom:16px;
+}
+.section-head h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.02em;line-height:1.15;font-weight:800}
+.section-head p{color:var(--text-muted);margin-top:12px;max-width:640px;font-size:16.5px}
+
+/* ---------- Цифры ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px 24px;text-align:center;transition:.25s;
+}
+.stat:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+.stat-num{font-size:clamp(30px,3.6vw,42px);font-weight:800;letter-spacing:-.02em;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-label{color:var(--text-muted);font-size:14px;font-weight:600;margin-top:6px}
+
+/* ---------- Услуги ---------- */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:30px 26px;transition:.25s;position:relative;overflow:hidden;
+}
+.service::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--accent-grad);opacity:0;transition:.25s;
+}
+.service:hover{transform:translateY(-5px);border-color:var(--border-strong);box-shadow:var(--shadow)}
+.service:hover::before{opacity:1}
+.service-icon{
+  width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:color-mix(in srgb, var(--accent) 14%, transparent);
+  font-size:24px;margin-bottom:18px;
+}
+.service h3{font-size:18.5px;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+.service p{color:var(--text-muted);font-size:14.8px}
+
+/* ---------- Портфолио ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.filter{
+  padding:10px 20px;border-radius:99px;font-size:14px;font-weight:700;cursor:pointer;
+  background:var(--card);border:1px solid var(--border);color:var(--text-muted);
+  transition:.2s;font-family:var(--font);
+}
+.filter:hover{color:var(--text);border-color:var(--border-strong)}
+.filter.active{background:var(--accent-grad);color:#0b0d14;border-color:transparent}
+
+.project{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:18px;overflow:hidden;transition:border-color .25s;
+}
+.project:hover{border-color:var(--border-strong)}
+.project-head{
+  display:flex;align-items:center;gap:16px;width:100%;
+  padding:24px 28px;background:none;border:none;cursor:pointer;
+  color:var(--text);font-family:var(--font);text-align:left;
+}
+.project-logo{
+  width:52px;height:52px;border-radius:14px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:19px;color:#fff;letter-spacing:-.02em;
+}
+.project-info{flex:1;min-width:0}
+.project-info h3{font-size:18.5px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.project-info h3 a{color:var(--accent);font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px}
+.project-info h3 a:hover{text-decoration:underline}
+.project-info p{color:var(--text-muted);font-size:14.3px;margin-top:3px}
+.project-count{
+  flex:none;padding:5px 12px;border-radius:99px;font-size:12.5px;font-weight:700;
+  background:color-mix(in srgb, var(--accent) 13%, transparent);color:var(--accent);
+}
+.project-chevron{flex:none;color:var(--text-muted);transition:transform .3s;font-size:13px}
+.project.open .project-chevron{transform:rotate(180deg)}
+.project-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.project.open .project-body{grid-template-rows:1fr}
+.project-body-inner{overflow:hidden}
+.project-links{padding:4px 28px 26px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plink{
+  display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:var(--radius-sm);
+  background:var(--bg-soft);border:1px solid var(--border);font-size:14.2px;font-weight:600;
+  color:var(--text);transition:.2s;line-height:1.4;
+}
+html[data-theme="dark"] .plink{background:rgba(255,255,255,.03)}
+.plink:hover{border-color:var(--accent);transform:translateX(4px);color:var(--accent)}
+.plink .type-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.plink .arrow{margin-left:auto;color:var(--text-muted);flex:none;transition:.2s}
+.plink:hover .arrow{color:var(--accent)}
+.hidden{display:none !important}
+
+/* ---------- О себе ---------- */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.about-text p{color:var(--text-muted);font-size:16.5px;margin-bottom:16px}
+.about-text p strong{color:var(--text)}
+.about-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:30px;position:sticky;top:96px;
+}
+.about-card h3{font-size:17px;font-weight:800;margin-bottom:18px}
+.skill-row{margin-bottom:16px}
+.skill-row:last-child{margin-bottom:0}
+.skill-top{display:flex;justify-content:space-between;font-size:13.8px;font-weight:700;margin-bottom:7px}
+.skill-top span:last-child{color:var(--text-muted);font-weight:600}
+.skill-bar{height:7px;border-radius:99px;background:var(--bg-soft);overflow:hidden}
+html[data-theme="dark"] .skill-bar{background:rgba(255,255,255,.07)}
+.skill-fill{height:100%;border-radius:99px;background:var(--accent-grad);width:0;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+
+/* ---------- Контакты ---------- */
+.contact{
+  background:var(--card);border:1px solid var(--border);border-radius:26px;
+  padding:clamp(36px,6vw,64px);text-align:center;position:relative;overflow:hidden;
+}
+.contact::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 240px at 50% -60px, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
+  pointer-events:none;
+}
+.contact h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;position:relative}
+.contact p{color:var(--text-muted);max-width:520px;margin:0 auto 32px;font-size:16.5px;position:relative}
+.contact-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;position:relative;margin-bottom:36px}
+.contact-direct{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;position:relative}
+.contact-chip{
+  display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:99px;
+  background:var(--bg-soft);border:1px solid var(--border);font-size:14.5px;font-weight:700;
+  transition:.2s;
+}
+html[data-theme="dark"] .contact-chip{background:rgba(255,255,255,.04)}
+.contact-chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.contact-chip svg{color:var(--accent);flex:none}
+
+/* ---------- Футер ---------- */
+.footer{border-top:1px solid var(--border);padding:32px 0;margin-top:40px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.footer-copy{color:var(--text-muted);font-size:13.8px}
+.footer-socials{display:flex;gap:10px}
+.footer-socials a{
+  width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--border);color:var(--text-muted);transition:.2s;
+}
+.footer-socials a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+
+/* ---------- Кнопка «наверх» ---------- */
+.to-top{
+  position:fixed;right:24px;bottom:24px;width:46px;height:46px;border-radius:14px;
+  background:var(--accent-grad);color:#0b0d14;border:none;cursor:pointer;font-size:18px;
+  display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
+  transition:.3s;z-index:90;box-shadow:0 10px 26px rgba(124,108,240,.4);
+}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{transform:translateY(-3px)}
+
+/* ---------- Анимация появления ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ============================================================
+   ВИЗУАЛЬНЫЙ РЕДАКТОР (виден только при ?edit=1)
+   ============================================================ */
+.edit-fab{
+  position:fixed;left:24px;bottom:24px;z-index:210;
+  display:none;align-items:center;gap:9px;
+  padding:13px 22px;border-radius:99px;border:none;cursor:pointer;
+  background:var(--accent-grad);color:#0b0d14;font-weight:800;font-size:14.5px;
+  font-family:var(--font);box-shadow:0 10px 30px rgba(124,108,240,.45);transition:.2s;
+}
+.edit-fab:hover{transform:translateY(-2px)}
+body.edit .edit-fab{display:inline-flex}
+body.edit.editor-open .edit-fab{display:none}
+
+.editor-panel{
+  position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;z-index:220;
+  background:var(--bg-soft);border-left:1px solid var(--border-strong);
+  box-shadow:-24px 0 60px rgba(0,0,0,.35);
+  display:none;flex-direction:column;
+}
+body.edit.editor-open .editor-panel{display:flex}
+@media (min-width:1280px){
+  body.edit.editor-open .page-wrap{margin-right:420px;transition:margin .3s ease}
+  body.edit.editor-open .header{right:420px}
+}
+.editor-head{
+  padding:18px 20px;border-bottom:1px solid var(--border);flex:none;
+  display:flex;flex-direction:column;gap:12px;
+}
+.editor-head-row{display:flex;align-items:center;gap:10px}
+.editor-title{font-weight:800;font-size:16px;flex:1;display:flex;align-items:center;gap:9px}
+.editor-title .dot{width:9px;height:9px;border-radius:50%;background:#3ddc84}
+.ed-btn{
+  padding:9px 15px;border-radius:11px;border:1px solid var(--border);cursor:pointer;
+  background:var(--card);color:var(--text);font-weight:700;font-size:13px;font-family:var(--font);
+  transition:.2s;display:inline-flex;align-items:center;gap:7px;
+}
+.ed-btn:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+.ed-btn.primary{background:var(--accent-grad);color:#0b0d14;border:none}
+.ed-btn.danger:hover{border-color:#f06c6c;color:#f06c6c}
+.editor-note{font-size:12.3px;color:var(--text-muted);line-height:1.5}
+.editor-body{flex:1;overflow-y:auto;padding:14px 20px 40px}
+.editor-panel details{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  margin-bottom:12px;overflow:hidden;
+}
+.editor-panel summary{
+  padding:14px 16px;font-weight:800;font-size:14.3px;cursor:pointer;
+  list-style:none;display:flex;align-items:center;gap:10px;user-select:none;
+}
+.editor-panel summary::-webkit-details-marker{display:none}
+.editor-panel summary::after{content:"▾";margin-left:auto;color:var(--text-muted);transition:.2s;font-size:12px}
+.editor-panel details[open] summary::after{transform:rotate(180deg)}
+.ed-section-body{padding:4px 16px 16px}
+.efield{margin-bottom:14px}
+.efield > label{display:block;font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:6px;letter-spacing:.02em}
+.efield input[type="text"],.efield input[type="number"],.efield input[type="password"],.efield textarea,.efield select{
+  width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--border);
+  background:var(--bg-soft);color:var(--text);font-family:var(--font);font-size:13.5px;
+  outline:none;transition:.2s;resize:vertical;
+}
+html[data-theme="dark"] .efield input,html[data-theme="dark"] .efield textarea,html[data-theme="dark"] .efield select{background:rgba(255,255,255,.04)}
+.efield input:focus,.efield textarea:focus,.efield select:focus{border-color:var(--accent)}
+.efield input[type="color"]{width:46px;height:36px;border:1px solid var(--border);border-radius:9px;background:none;cursor:pointer;padding:2px}
+.efield .hint{font-size:11.3px;color:var(--text-muted);margin-top:4px;line-height:1.45}
+.echeck{display:flex;align-items:center;gap:9px;font-size:13.3px;font-weight:700;cursor:pointer;margin-bottom:12px}
+.echeck input{width:17px;height:17px;accent-color:var(--accent);cursor:pointer}
+.elist-item{
+  border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:10px;
+  background:var(--bg-soft);position:relative;
+}
+html[data-theme="dark"] .elist-item{background:rgba(255,255,255,.025)}
+.elist-item .efield{margin-bottom:9px}
+.elist-item .efield:last-of-type{margin-bottom:0}
+.ed-del{
+  position:absolute;top:9px;right:9px;width:26px;height:26px;border-radius:8px;
+  border:1px solid var(--border);background:var(--card);color:var(--text-muted);
+  cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.ed-del:hover{border-color:#f06c6c;color:#f06c6c}
+.ed-add{
+  width:100%;padding:10px;border-radius:11px;border:1px dashed var(--border-strong);
+  background:none;color:var(--text-muted);font-weight:700;font-size:13px;cursor:pointer;
+  font-family:var(--font);transition:.2s;margin-top:2px;
+}
+.ed-add:hover{color:var(--accent);border-color:var(--accent)}
+.ed-row{display:flex;gap:10px}
+.ed-row .efield{flex:1}
+.ed-proj{border:1px solid var(--border-strong);border-radius:14px;padding:14px;margin-bottom:14px;background:var(--bg-soft)}
+.ed-proj-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ed-proj-head b{flex:1;font-size:13.8px}
+.ed-file-btn{position:relative;overflow:hidden;display:inline-flex}
+.ed-file-btn input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.ed-saved{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(80px);z-index:300;
+  padding:12px 22px;border-radius:99px;background:var(--card);border:1px solid var(--border-strong);
+  font-size:13.5px;font-weight:700;box-shadow:var(--shadow);transition:.35s;pointer-events:none;
+}
+.ed-saved.show{transform:translateX(-50%) translateY(0)}
+
+/* ---------- 🔐 Окно ввода пароля ---------- */
+.pw-overlay{
+  position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;
+  background:rgba(5,7,12,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding:20px;
+}
+.pw-overlay.show{display:flex}
+.pw-card{
+  width:100%;max-width:400px;background:var(--card);border:1px solid var(--border-strong);
+  border-radius:24px;padding:36px 32px;text-align:center;box-shadow:var(--shadow);
+  animation:pwIn .4s cubic-bezier(.22,1,.36,1);
+}
+@keyframes pwIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.pw-lock{
+  width:64px;height:64px;border-radius:20px;margin:0 auto 18px;
+  background:var(--accent-grad);display:flex;align-items:center;justify-content:center;
+  font-size:28px;box-shadow:0 12px 30px rgba(124,108,240,.4);
+}
+.pw-card h3{font-size:21px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.pw-card .pw-text{color:var(--text-muted);font-size:14px;margin-bottom:22px;line-height:1.55}
+.pw-input-row{position:relative;margin-bottom:12px}
+.pw-input-row input{
+  width:100%;padding:14px 52px 14px 18px;border-radius:14px;
+  border:1px solid var(--border-strong);background:var(--bg-soft);color:var(--text);
+  font-family:var(--font);font-size:15px;font-weight:600;outline:none;transition:.2s;
+}
+html[data-theme="dark"] .pw-input-row input{background:rgba(255,255,255,.05)}
+.pw-input-row input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)}
+.pw-input-row input.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.pw-eye{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  width:36px;height:36px;border-radius:10px;border:none;background:none;cursor:pointer;
+  color:var(--text-muted);font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.pw-eye:hover{color:var(--text);background:var(--card-hover)}
+.pw-error{color:#f06c6c;font-size:13px;font-weight:700;min-height:20px;margin-bottom:6px}
+.pw-submit{width:100%;justify-content:center;margin-bottom:10px}
+.pw-hintbar{
+  display:flex;gap:6px;justify-content:center;margin:-4px 0 10px;height:8px;
+}
+.pw-hintbar i{width:34px;height:5px;border-radius:99px;background:var(--border-strong);transition:.3s}
+.pw-hintbar i.on-weak{background:#f06c6c}
+.pw-hintbar i.on-mid{background:#f0a35c}
+.pw-hintbar i.on-strong{background:#3ddc84}
+.pw-back{
+  background:none;border:none;color:var(--text-muted);font-size:13px;font-weight:600;
+  cursor:pointer;font-family:var(--font);padding:8px;transition:.2s;
+}
+.pw-back:hover{color:var(--text)}
+.pw-note{color:var(--text-muted);font-size:11.5px;line-height:1.5;margin-top:14px;text-align:left;background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:11px 13px}
+html[data-theme="dark"] .pw-note{background:rgba(255,255,255,.03)}
+
+/* ---------- Мобильная версия ---------- */
+@media (max-width: 1020px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-photo{order:2}
+  .photo-frame{max-width:330px}
+}
+@media (max-width: 900px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .services{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-card{position:static}
+  .project-links{grid-template-columns:1fr}
+  .nav{
+    position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;
+    background:var(--bg-soft);border-bottom:1px solid var(--border);
+    padding:14px 24px 20px;gap:4px;
+    transform:translateY(-130%);transition:transform .35s ease;z-index:99;
+    box-shadow:var(--shadow);
+  }
+  .nav.open{transform:none}
+  .nav a{padding:13px 16px;font-size:15.5px}
+  .burger{display:flex}
+  section{padding:64px 0}
+  .hero{padding:118px 0 60px}
+  .project-head{padding:20px}
+  .project-links{padding:4px 20px 22px}
+  .photo-chip.pos-tl,.photo-chip.pos-bl{left:-8px}
+  .photo-chip.pos-tr,.photo-chip.pos-br{right:-8px}
+  .editor-panel{width:100%}
+}
+@media (max-width: 480px){
+  .stats{grid-template-columns:1fr 1fr;gap:12px}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<!-- Шапка -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#hero" class="logo"><span class="logo-dot"></span><span id="logo-text"></span></a>
+    <nav class="nav" id="nav"></nav>
+    <div class="header-actions">
+      <button class="theme-btn" id="theme-btn" aria-label="Переключить тему">🌙</button>
+      <button class="burger" id="burger" aria-label="Меню">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge reveal"><span class="pulse"></span><span id="hero-badge-text"></span></div>
+        <h1 class="reveal" id="hero-title"></h1>
+        <div class="hero-roles reveal" id="hero-roles"></div>
+        <p class="hero-tagline reveal" id="hero-tagline"></p>
+        <div class="hero-cta reveal" id="hero-cta"></div>
+        <div class="hero-facts reveal" id="hero-facts"></div>
+      </div>
+      <div class="hero-photo reveal" id="hero-photo"></div>
+    </div>
+  </section>
+
+  <!-- Цифры -->
+  <section id="stats">
+    <div class="container"><div class="stats" id="stats-grid"></div></div>
+  </section>
+
+  <!-- Услуги -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag" id="services-tag"></span>
+        <h2 id="services-title"></h2>
+        <p id="services-subtitle"></p>
+      </div>
+      <div class="services" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- Портфолио -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">Портфолио</span>
+        <h2>Работы по проектам</h2>
+        <p>Каждый проект раскрывается — внутри ссылки на посты, статьи, видео и другие материалы. Фильтруйте по типу контента.</p>
+      </div>
+      <div class="filters reveal" id="filters"></div>
+      <div id="projects"></div>
+    </div>
+  </section>
+
+  <!-- О себе -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">О себе</span>
+        <h2 id="about-title"></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal" id="about-text"></div>
+        <div class="about-card reveal">
+          <h3>Ключевые навыки</h3>
+          <div id="skills"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact reveal">
+        <h2 id="contact-title"></h2>
+        <p id="contact-subtitle"></p>
+        <div class="contact-cta" id="contact-cta"></div>
+        <div class="contact-direct" id="contact-direct"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy" id="footer-copy"></div>
+    <div class="footer-socials" id="footer-socials"></div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" aria-label="Наверх">↑</button>
+</div><!-- /page-wrap -->
+
+<!-- ══════════ ВИЗУАЛЬНЫЙ РЕДАКТОР (работает при ?edit=1) ══════════ -->
+<button class="edit-fab" id="edit-fab">✏️ Редактор сайта</button>
+<aside class="editor-panel" id="editor-panel" aria-label="Редактор сайта">
+  <div class="editor-head">
+    <div class="editor-head-row">
+      <span class="editor-title"><span class="dot"></span>Редактор сайта</span>
+      <button class="ed-btn danger" id="ed-reset" title="Вернуть исходное содержимое">↺</button>
+      <button class="ed-btn" id="ed-close" title="Закрыть редактор">✕</button>
+    </div>
+    <div class="editor-head-row">
+      <button class="ed-btn primary" id="ed-download">💾 Скачать content.js</button>
+    </div>
+    <div class="editor-note">Изменения видны сразу. Чтобы сохранить их навсегда — скачайте <b>content.js</b> и положите его рядом с index.html (локально) или загрузите в репозиторий GitHub.</div>
+  </div>
+  <div class="editor-body" id="editor-body"></div>
+</aside>
+<div class="ed-saved" id="ed-saved"></div>
+
+<!-- 🔐 Окно защиты редактора -->
+<div class="pw-overlay" id="pw-overlay" role="dialog" aria-modal="true" aria-labelledby="pw-title">
+  <div class="pw-card">
+    <div class="pw-lock">🔐</div>
+    <h3 id="pw-title">Введите пароль</h3>
+    <p class="pw-text" id="pw-text">Редактор сайта защищён паролем.</p>
+    <div class="pw-input-row">
+      <input type="password" id="pw-input" placeholder="Пароль" autocomplete="current-password">
+      <button class="pw-eye" id="pw-eye" type="button" aria-label="Показать пароль">👁</button>
+    </div>
+    <div class="pw-input-row" id="pw-row2" style="display:none">
+      <input type="password" id="pw-input2" placeholder="Повторите пароль" autocomplete="new-password">
+    </div>
+    <div class="pw-hintbar" id="pw-strength" style="display:none"><i></i><i></i><i></i><i></i></div>
+    <div class="pw-error" id="pw-error" role="alert"></div>
+    <button class="btn btn-primary pw-submit" id="pw-submit" type="button">Войти в редактор</button>
+    <button class="pw-back" id="pw-back" type="button">← Вернуться к сайту</button>
+    <div class="pw-note" id="pw-note" style="display:none">💡 Пароль не хранится в открытом виде — только его SHA-256 хеш. Задайте пароль и <b>обязательно скачайте content.js</b>, чтобы пароль сохранился на опубликованном сайте.</div>
+  </div>
+</div>
+
+<!-- Файл с вашим содержимым (создаётся редактором). Если его нет — используются встроенные данные. -->
+<script src="content.js" onerror="void 0"></script>
+
+<script>
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║  📦 ИСХОДНОЕ СОДЕРЖИМОЕ САЙТА (DEFAULT_CONFIG)                               ║
+   ║                                                                               ║
+   ║  ⚡ Рекомендуемый способ правок: откройте сайт с ?edit=1                      ║
+   ║     (например: index.html?edit=1), меняйте всё в визуальном                   ║
+   ║     редакторе и нажмите «Скачать content.js».                                 ║
+   ║                                                                               ║
+   ║  Этот блок можно править и вручную — он используется,                         ║
+   ║  только если файла content.js нет рядом.                                      ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+const DEFAULT_CONFIG = {
+
+  // ───────────────────────── ДИЗАЙН / ЦВЕТА ─────────────────────────
+  design: {
+    accent: "#7c6cf0",       // основной цвет
+    accent2: "#4ecdc4",      // второй цвет градиента
+    theme: "dark",           // "dark" | "light" | "auto" — тема по умолчанию
+  },
+
+  // ─────────────────────── 🔐 ЗАЩИТА РЕДАКТОРА ───────────────────────
+  // passwordHash: "" — пароль не задан (при первом входе редактор
+  // предложит его придумать). Пароль хранится только в виде хеша.
+  // Сменить/убрать пароль можно в редакторе, раздел «Админка».
+  admin: {
+    passwordHash: "",
+    sessionMinutes: 120,     // сколько держать редактор открытым без повторного ввода
+  },
+
+  // ─────────────────────────── ШАПКА САЙТА ───────────────────────────
+  nav: {
+    logo: "Руслан Мороз",
+    links: [
+      { label: "Услуги",     href: "#services"  },
+      { label: "Портфолио",  href: "#portfolio" },
+      { label: "О себе",     href: "#about"    },
+      { label: "Контакты",   href: "#contact"  },
+    ],
+  },
+
+  // ─────────────────────── ПЕРВЫЙ ЭКРАН (HERO) ───────────────────────
+  hero: {
+    show: true,
+    badge: "Открыт к новым проектам",
+    // \n — перенос строки. Часть после \n будет выделена градиентом.
+    title: "Контент, который\nпродаёт недвижимость",
+    roles: "SMM-менеджер · контент-маркетолог · копирайтер",
+    tagline: "Гений, плейбой, филантроп и, поговаривают, неплохой контент-маркетолог. Пишу тексты, снимаю сценарии и веду соцсети проектов в сфере недвижимости.",
+    buttons: [
+      { label: "📄 Скачать резюме", href: "https://spb.hh.ru/resume/f89af725ff0cd395720039ed1f41494a61416f", style: "primary" },
+      { label: "✉️ Написать мне",   href: "#contact", style: "ghost" },
+    ],
+    facts: [
+      { icon: "📍", text: "Живу в Санкт-Петербурге" },
+      { icon: "✅", text: "Готов выполнить тестовое задание" },
+      { icon: "🤝", text: "В приоритете долгосрочное сотрудничество" },
+    ],
+    // ── ФОТО: укажите имя файла (photo.jpg рядом с index.html) или ссылку.
+    //    Пустое значение "" — красивая заглушка с инициалами.
+    photo: {
+      src: "photo-sample.jpg",
+      initials: "РМ",
+      alt: "Руслан Мороз",
+      chips: [
+        { icon: "📍", text: "Санкт-Петербург", pos: "tl" },
+        { icon: "✍️", text: "40+ текстов", pos: "br" },
+      ],
+    },
+  },
+
+  // ────────────────────────────── ЦИФРЫ ──────────────────────────────
+  stats: {
+    show: true,
+    items: [
+      { num: "4+",  label: "проекта в портфолио" },
+      { num: "40+", label: "текстов и постов" },
+      { num: "9",   label: "сценариев для видео" },
+      { num: "4",   label: "кейса и статьи на VC" },
+    ],
+  },
+
+  // ────────────────────────────── УСЛУГИ ─────────────────────────────
+  services: {
+    show: true,
+    tag: "Чем я занимаюсь",
+    title: "Услуги",
+    subtitle: "Закрываю контент-задачи проекта под ключ: от стратегии и текстов до сценариев роликов и инструкций для команд.",
+    items: [
+      { icon: "✍️", title: "Копирайтинг",           text: "Посты для Telegram и VK, продающие тексты, письма, описания объектов недвижимости." },
+      { icon: "📱", title: "SMM и ведение каналов", text: "Контент-планы, рубрики, посевы, аналитика. Опыт с каналами застройщиков и агентств." },
+      { icon: "🎬", title: "Сценарии для видео",    text: "Shorts, Reels и длинные ролики: от хука первых секунд до призыва к действию." },
+      { icon: "🧲", title: "Лид-магниты и квизы",   text: "Механики привлечения тёплых лидов: квиз-лендинги, вебинары, гайды." },
+      { icon: "📊", title: "Статьи и кейсы",        text: "Экспертные статьи для VC, отраслевых медиа и блогов компаний." },
+      { icon: "📚", title: "Инструкции и скрипты",  text: "Регламенты для отделов продаж и гайды по запуску Telegram-каналов." },
+    ],
+  },
+
+  // ──────────────────────────── ПОРТФОЛИО ────────────────────────────
+  portfolio: {
+    show: true,
+    filterTypes: [
+      { id: "all",     label: "Все",       color: "#7c6cf0" },
+      { id: "post",    label: "Посты",     color: "#4ecdc4" },
+      { id: "article", label: "Статьи",    color: "#f0a35c" },
+      { id: "video",   label: "Видео",     color: "#f06c8e" },
+      { id: "doc",     label: "Документы", color: "#8ea2f0" },
+    ],
+    projects: [
+      {
+        name: "Cosmic Realty",
+        desc: "Маркетинговое агентство в сфере недвижимости",
+        site: "https://cosmicrealty.ru/",
+        color: "#7c6cf0",
+        items: [
+          { type: "post",    title: "4 метода привлечения горячих лидов в премиум-сегменте", url: "https://t.me/cosmicrealty/298" },
+          { type: "post",    title: "Как заставить квиз-лендинги приносить много дешёвых и тёплых лидов", url: "https://t.me/cosmicrealty/296" },
+          { type: "post",    title: "Нейросеть как инструмент маркетинга", url: "https://t.me/cosmicrealty/300" },
+          { type: "post",    title: "Вертикальные видео: эффективный и бесплатный метод продвижения", url: "https://t.me/cosmicrealty/384" },
+          { type: "post",    title: "Приглашение на вебинар", url: "https://t.me/cosmicrealty/347" },
+          { type: "post",    title: "Застройщик UNIT: наши ценности и миссия", url: "https://t.me/unit_70/51" },
+          { type: "post",    title: "UNIT: большая евротрёшка для дружной семьи всего за 30 045 ₽ в месяц", url: "https://t.me/unit_70/36" },
+          { type: "post",    title: "UNIT: новостройка или вторичка — где лучше купить квартиру?", url: "https://t.me/unit_70/34" },
+          { type: "post",    title: "UNIT: пост-закреп — доступные квартиры с отделкой «под ключ»", url: "https://t.me/unit_70/9" },
+          { type: "post",    title: "Сходня Кантри Клаб: ТОП-5 секретов идеальной террасы", url: "https://t.me/shodnyacountryclub/167" },
+          { type: "post",    title: "Сходня Кантри Клаб: одноэтажный или двухэтажный дом?", url: "https://t.me/shodnyacountryclub/165" },
+          { type: "post",    title: "Сходня Кантри Клаб: приглашение на экскурсию в шоу-дом", url: "https://t.me/shodnyacountryclub/157" },
+          { type: "post",    title: "Сходня Кантри Клаб: пост-закреп — дома с участком в 13 км от Москвы", url: "https://t.me/shodnyacountryclub/128" },
+          { type: "post",    title: "Квантум Новостройки: как семья купила две квартиры по семейной ипотеке", url: "https://t.me/novostroyki_quantum/8" },
+          { type: "post",    title: "Квантум Новостройки: бесплатный подбор квартиры", url: "https://t.me/novostroyki_quantum/7" },
+          { type: "post",    title: "Квантум Новостройки: пост-закреп — рассрочка и субсидированные ставки", url: "https://t.me/novostroyki_quantum/3" },
+          { type: "article", title: "Кейс: привлечение клиентов на покупку зарубежной недвижимости через YouTube", url: "https://vc.ru/cosmicrealty/1119627-keis-privlechenie-klientov-na-pokupku-zarubezhnoi-nedvizhimosti-s-pomoshyu-youtube-kanala" },
+          { type: "article", title: "10 правил рабочей воронки продаж в недвижимости", url: "https://vc.ru/marketing/1227135-10-pravil-rabochei-voronki-prodazh-v-nedvizhimosti" },
+          { type: "article", title: "Кейс: горячие лиды по 1300 ₽ на коммерческую недвижимость в Москве", url: "https://vc.ru/marketing/1237751-keis-kak-poluchat-goryachie-lidy-po-1300-na-kommercheskuyu-nedvizhimost-v-moskve" },
+          { type: "article", title: "Кейс: покупатели недвижимости на 1,453 млрд ₽ для загородного застройщика", url: "https://vc.ru/cosmicrealty/1463793-keis-kak-my-privlekli-pokupatelei-nedvizhimosti-na-1453-mlrd-dlya-zagorodnogo-zastroishika-v-nizhegorodskoi-oblasti" },
+          { type: "video",   title: "Выбираем CRM-систему для недвижимости", url: "https://www.youtube.com/shorts/t2CVEvEHnTs" },
+          { type: "video",   title: "ТОП-5 главных ошибок менеджеров при продаже недвижимости", url: "https://www.youtube.com/shorts/pcda4G6_wkE" },
+          { type: "video",   title: "Работает ли реклама недвижимости в VK в 2024 году", url: "https://www.youtube.com/shorts/XJdyFnrItOE" },
+          { type: "video",   title: "Что лучше: Telegram Ads или посевы в каналах", url: "https://www.youtube.com/shorts/iOsflBxM804" },
+          { type: "video",   title: "4 способа заставить лид-магниты приносить огромное количество клиентов", url: "https://www.youtube.com/shorts/CHND7XFkISQ" },
+          { type: "doc",     title: "Инструкция: как создать идеальный Telegram-канал про недвижимость", url: "https://telegra.ph/Kak-sozdat-idealnyj-telegram-kanal-pro-nedvizhimost-raskryvaem-glavnye-sekrety-kontent-marketinga-i-reklamy-01-23" },
+        ],
+      },
+      {
+        name: "KEY-Недвижимость",
+        desc: "Молодое агентство недвижимости в Петербурге",
+        site: "https://t.me/key_estate",
+        color: "#4ecdc4",
+        items: [
+          { type: "post", title: "Подборка квартир для IT-специалистов", url: "https://t.me/key_estate/2137" },
+          { type: "post", title: "Как мы помогаем получить ипотеку?", url: "https://t.me/key_estate/2176" },
+          { type: "post", title: "Где живут наши менеджеры?", url: "https://t.me/key_estate/2111" },
+          { type: "post", title: "Две квартиры, рядом с которыми скоро появится метро", url: "https://t.me/key_estate/2119" },
+          { type: "post", title: "Чем отличается срок сдачи от передачи ключей", url: "https://t.me/key_estate/2105" },
+        ],
+      },
+      {
+        name: "«Хвойный» квартал",
+        desc: "Загородный квартал в Саратовской области",
+        site: "https://hvoynykvartal.ru/",
+        color: "#3ddc84",
+        items: [
+          { type: "post",  title: "5 причин побывать на экскурсии в «Хвойном» квартале", url: "https://t.me/hvoynykvartal/157" },
+          { type: "post",  title: "На что стоит обратить внимание при покупке дома?", url: "https://t.me/hvoynykvartal/191" },
+          { type: "post",  title: "Во сколько обходится содержание дома в «Хвойном»", url: "https://t.me/hvoynykvartal/161" },
+          { type: "post",  title: "Что выгоднее: купить дом или построить самому? Развеиваем мифы", url: "https://t.me/hvoynykvartal/194" },
+          { type: "post",  title: "Почему инвестировать в Саратовскую область выгодно", url: "https://t.me/hvoynykvartal/167" },
+          { type: "post",  title: "5 отличий «Хвойного» квартала от обычных коттеджных поселков", url: "https://t.me/hvoynykvartal/179" },
+          { type: "post",  title: "Планы по строительству «Хвойного»", url: "https://t.me/hvoynykvartal/195" },
+          { type: "video", title: "Концепция и идеология «Хвойного» квартала", url: "https://www.instagram.com/reel/C8ej3CYsxhH/" },
+          { type: "video", title: "Ипотека в «Хвойном» квартале", url: "https://www.instagram.com/reel/C8RWzNwsjjk/" },
+          { type: "video", title: "Инвестиции в «Хвойный»", url: "https://www.instagram.com/reel/C8qzqOpsXwz/" },
+          { type: "video", title: "Сельская ипотека в «Хвойном»", url: "https://www.instagram.com/reel/C_QkrqasoHr/" },
+          { type: "video", title: "В «Хвойном» квартале живут основатели проекта", url: "https://www.instagram.com/reel/C8wn_iioojl/" },
+          { type: "doc",   title: "Скрипт для отдела продаж", url: "https://docs.google.com/document/d/11HicRjikr8z1gK2TDtiaTzAUaREXNqEYFnYx-V1FdjI/edit" },
+        ],
+      },
+      {
+        name: "Eyetronic",
+        desc: "Digital-агентство в сфере недвижимости",
+        site: "https://art.su/",
+        color: "#f0a35c",
+        items: [
+          { type: "post",    title: "Как себя чувствуют банки на фоне падения спроса на ипотеку", url: "https://t.me/telejka_novostroyki/549" },
+          { type: "post",    title: "Минстрой и МЧС составили «дорожную карту» по деревянному домостроению", url: "https://t.me/telejka_novostroyki/562" },
+          { type: "post",    title: "Президент запретил делить недвижимость на доли меньше 6 кв. метров", url: "https://t.me/telejka_novostroyki/567" },
+          { type: "post",    title: "В Москве вырос спрос на вторичную недвижимость", url: "https://t.me/telejka_novostroyki/572" },
+          { type: "article", title: "Превращаем квартиру в неприступную крепость: как выбрать дверь и сигнализацию", url: "https://www.novostroy.ru/articles/journal/prevrashchaem-kvartiru-v-nepristupnuyu-krepost-kak-vybrat-dver-i-signalizatsiyu/" },
+          { type: "article", title: "Экономим во время ремонта — от каких расходов можно отказаться", url: "https://www.novostroy.ru/articles/journal/ekonomim-vo-vremya-remonta-ot-kakikh-raskhodov-mozhno-legko-otkazatsya/" },
+          { type: "article", title: "Почему в новых домах отключают горячую воду и как это решают застройщики", url: "https://www.novostroy.ru/articles/urban/planovoe-stradanie-pochemu-v-novykh-domakh-otklyuchayut-goryachuyu-vodu-i-kak-etu-problemu-reshayut-zastroyshchiki/" },
+          { type: "article", title: "Почему раздельный санузел — пережиток прошлого", url: "https://www.novostroy.ru/articles/journal/pochemu-razdelnyy-sanuzel-eto-perezhitok-proshlogo-kotoromu-net-mesta-v-sovremennom-mire/" },
+          { type: "article", title: "Вредят ли здоровью ЛЭП, проходящие рядом с домом", url: "https://www.novostroy.ru/articles/journal/vredyat-li-zdorovyu-lep-prokhodyashchie-ryadom-s-domom/" },
+          { type: "article", title: "Документы при покупке квартиры: как подготовиться к любой сделке", url: "https://www.novostroy.ru/articles/library/dokumenty-pri-pokupke-kvartiry-kak-podgotovitsya-k-lyuboy-sdelke-kakoy-by-slozhnoy-ona-ni-byla/" },
+        ],
+      },
+    ],
+  },
+
+  // ────────────────────────────── О СЕБЕ ─────────────────────────────
+  about: {
+    show: true,
+    title: "Контент-маркетолог из Санкт-Петербурга",
+    // Каждый элемент массива — отдельный абзац. **текст** внутри будет жирным.
+    paragraphs: [
+      "Специализируюсь на **недвижимости**: работал с агентствами, застройщиками, загородными посёлками и маркетинговыми агентствами. Знаю, как говорить о квадратных метрах так, чтобы это читали и после чтения — оставляли заявку.",
+      "Веду проекты **под ключ**: контент-стратегия, рубрикатор, тексты постов и статей, сценарии вертикальных видео, лид-магниты и квизы, инструкции для команд продаж.",
+      "**В приоритете долгосрочное сотрудничество** — люблю погружаться в продукт и растить каналы месяцами, а не делать разовые публикации. Готов выполнить тестовое задание.",
+    ],
+    skills: [
+      { name: "Копирайтинг и тексты",    level: 95 },
+      { name: "SMM (Telegram, VK)",      level: 90 },
+      { name: "Контент-маркетинг",       level: 90 },
+      { name: "Сценарии для видео",      level: 85 },
+      { name: "Лидогенерация и воронки", level: 80 },
+    ],
+  },
+
+  // ───────────────────────────── КОНТАКТЫ ────────────────────────────
+  contact: {
+    show: true,
+    title: "Давайте поработаем вместе",
+    subtitle: "Напишите мне — обсудим ваш проект, задачи и формат сотрудничества. Отвечаю быстро.",
+    buttons: [
+      { label: "✉️ frytrew@gmail.com", href: "mailto:frytrew@gmail.com", style: "primary" },
+      { label: "📞 +7 (981) 966-87-82", href: "tel:+79819668782", style: "ghost" },
+    ],
+    links: [
+      { label: "Telegram", href: "https://t.me/feeed", icon: "tg" },
+      { label: "VK",       href: "https://vk.com/feled", icon: "vk" },
+      { label: "Резюме на hh.ru", href: "https://spb.hh.ru/resume/f89af725ff0cd395720039ed1f41494a61416f", icon: "doc" },
+    ],
+  },
+
+  // ────────────────────────────── ФУТЕР ──────────────────────────────
+  footer: {
+    copy: "© 2026 Руслан Мороз. Сделано с любовью к контенту.",
+    socials: [
+      { label: "Telegram", href: "https://t.me/feeed", icon: "tg" },
+      { label: "VK",       href: "https://vk.com/feled", icon: "vk" },
+      { label: "Email",    href: "mailto:frytrew@gmail.com", icon: "mail" },
+    ],
+  },
+};
+
+/* ╔════════════════════════════════════════════════════════════════════╗
+   ║  ТЕХНИЧЕСКАЯ ЧАСТЬ — МЕНЯТЬ НЕ НУЖНО                               ║
+   ╚════════════════════════════════════════════════════════════════════╝ */
+
+const EDIT_MODE = (() => { try { return new URLSearchParams(location.search).has("edit"); } catch(e){ return false; } })();
+const DRAFT_KEY = "portfolioDraft_v1";
+
+let CONFIG = DEFAULT_CONFIG;
+if (window.SITE_CONTENT && typeof window.SITE_CONTENT === "object") CONFIG = window.SITE_CONTENT;
+CONFIG.admin = Object.assign({ passwordHash: "", sessionMinutes: 120 }, CONFIG.admin || {});
+if (EDIT_MODE) {
+  try {
+    const draft = localStorage.getItem(DRAFT_KEY);
+    if (draft) CONFIG = JSON.parse(draft);
+  } catch(e){}
+  document.addEventListener("DOMContentLoaded", () => document.body.classList.add("edit"));
+}
+
+const $ = (s, p = document) => p.querySelector(s);
+const $$ = (s, p = document) => [...p.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+const bold = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+const ICONS = {
+  tg:   '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>',
+  vk:   '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.08 14.27h-1.46c-.55 0-.72-.44-1.71-1.43-.86-.84-1.23-.95-1.45-.95-.3 0-.39.09-.39.52v1.31c0 .37-.12.59-1.09.59-1.61 0-3.4-.98-4.66-2.8C4.35 12.02 3.9 10.15 3.9 9.77c0-.22.09-.42.52-.42h1.46c.39 0 .54.18.69.59.75 2.17 2 4.07 2.51 4.07.19 0 .28-.09.28-.57V11.3c-.06-.99-.58-1.07-.58-1.42 0-.17.14-.34.36-.34h2.3c.31 0 .42.17.42.54v2.88c0 .31.14.42.23.42.19 0 .34-.11.69-.46 1.07-1.2 1.83-3.04 1.83-3.04.11-.24.29-.45.68-.45h1.46c.44 0 .53.22.44.54-.24 1.08-2.46 4.22-2.46 4.22-.19.31-.26.45 0 .79.19.26.83.81 1.26 1.3.79.89 1.39 1.64 1.55 2.16.16.52-.11.79-.65.79z"/></svg>',
+  mail: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  doc:  '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>',
+  ext:  '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>',
+};
+
+/* ---------- Дизайн (цвета из CONFIG) ---------- */
+function applyDesign(){
+  const d = CONFIG.design || {};
+  const r = document.documentElement;
+  if (d.accent)  r.style.setProperty("--accent", d.accent);
+  if (d.accent2) r.style.setProperty("--accent-2", d.accent2);
+  if (d.accent && d.accent2) r.style.setProperty("--accent-grad", `linear-gradient(135deg, ${d.accent} 0%, ${d.accent2} 100%)`);
+}
+
+/* ---------- Рендер всех блоков ---------- */
+function initialsOf(name){
+  return String(name).replace(/[«»"']/g, "").split(/\s+/).slice(0, 2).map(w => w[0]).join("").toUpperCase();
+}
+
+function renderNav(){
+  $("#logo-text").textContent = CONFIG.nav.logo;
+  $("#nav").innerHTML = CONFIG.nav.links.map(l => `<a href="${esc(l.href)}">${esc(l.label)}</a>`).join("");
+}
+
+function renderHero(){
+  const H = CONFIG.hero;
+  $("#hero-badge-text").textContent = H.badge || "";
+  const parts = String(H.title || "").split("\n");
+  $("#hero-title").innerHTML = esc(parts[0]) + (parts[1] ? ` <span class="grad">${esc(parts.slice(1).join(" "))}</span>` : "");
+  $("#hero-roles").textContent = H.roles || "";
+  $("#hero-tagline").textContent = H.tagline || "";
+  $("#hero-cta").innerHTML = (H.buttons || []).map(b =>
+    `<a class="btn ${b.style === "primary" ? "btn-primary" : "btn-ghost"}" href="${esc(b.href)}"${/^http/.test(b.href) ? ' target="_blank" rel="noopener"' : ""}>${esc(b.label)}</a>`
+  ).join("");
+  $("#hero-facts").innerHTML = (H.facts || []).map(f =>
+    `<span class="fact">${f.icon ? `<span>${f.icon}</span>` : ""}${esc(f.text)}</span>`
+  ).join("");
+
+  const P = H.photo || {};
+  const chips = (P.chips || []).map(c =>
+    `<span class="photo-chip pos-${esc(c.pos || "br")}">${c.icon ? `<span>${c.icon}</span>` : ""}${esc(c.text)}</span>`
+  ).join("");
+  $("#hero-photo").innerHTML = `
+    <div class="photo-blob"></div>
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <div class="photo-mono">
+          <span class="mono-letters">${esc(P.initials || initialsOf(CONFIG.nav.logo))}</span>
+          <span class="mono-hint">📷 Добавьте своё фото<br>в редакторе (раздел «Фото»)</span>
+        </div>
+        ${P.src ? `<img src="${esc(P.src)}" alt="${esc(P.alt || "")}" onerror="this.remove()">` : ""}
+      </div>
+      ${chips}
+    </div>`;
+}
+
+function renderStats(){
+  $("#stats-grid").innerHTML = (CONFIG.stats.items || []).map(s =>
+    `<div class="stat reveal"><div class="stat-num">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>`
+  ).join("");
+}
+
+function renderServices(){
+  $("#services-tag").textContent = CONFIG.services.tag || "";
+  $("#services-title").textContent = CONFIG.services.title || "";
+  $("#services-subtitle").textContent = CONFIG.services.subtitle || "";
+  $("#services-grid").innerHTML = (CONFIG.services.items || []).map(s =>
+    `<div class="service reveal"><div class="service-icon">${s.icon || ""}</div><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></div>`
+  ).join("");
+}
+
+let activeFilter = "all";
+function typeMeta(id){ return (CONFIG.portfolio.filterTypes || []).find(t => t.id === id) || { color: "#7c6cf0" }; }
+
+let portfolioInit = false;
+function renderPortfolio(){
+  const PF = CONFIG.portfolio;
+  $("#filters").innerHTML = (PF.filterTypes || []).map(t =>
+    `<button class="filter${t.id === activeFilter ? " active" : ""}" data-type="${esc(t.id)}">${esc(t.label)}</button>`
+  ).join("");
+  $("#projects").innerHTML = (PF.projects || []).map(p => `
+    <div class="project reveal${p.open ? " open" : ""}" data-project>
+      <button class="project-head" aria-expanded="${!!p.open}">
+        <span class="project-logo" style="background:linear-gradient(135deg, ${esc(p.color || "#7c6cf0")}, ${esc(p.color || "#7c6cf0")}bb)">${esc(initialsOf(p.name))}</span>
+        <span class="project-info">
+          <h3>${esc(p.name)}${p.site ? `<a href="${esc(p.site)}" target="_blank" rel="noopener">сайт ${ICONS.ext}</a>` : ""}</h3>
+          <p>${esc(p.desc || "")}</p>
+        </span>
+        <span class="project-count">${(p.items || []).length}</span>
+        <span class="project-chevron">▼</span>
+      </button>
+      <div class="project-body"><div class="project-body-inner">
+        <div class="project-links">
+          ${(p.items || []).map(it => `
+            <a class="plink" data-type="${esc(it.type)}" href="${esc(it.url)}" target="_blank" rel="noopener">
+              <span class="type-dot" style="background:${typeMeta(it.type).color}"></span>
+              <span>${esc(it.title)}</span>
+              <span class="arrow">${ICONS.ext}</span>
+            </a>`).join("")}
+        </div>
+      </div></div>
+    </div>`).join("");
+  // первый проект раскрыт по умолчанию (только при первом рендере)
+  if (!portfolioInit) {
+    const first = $(".project");
+    if (first) {
+      first.classList.add("open");
+      const fh = $(".project-head", first);
+      if (fh) fh.setAttribute("aria-expanded", "true");
+    }
+    portfolioInit = true;
+  }
+  applyFilter();
+}
+
+function applyFilter(){
+  $$(".plink").forEach(l => l.classList.toggle("hidden", activeFilter !== "all" && l.dataset.type !== activeFilter));
+  $$(".project").forEach(proj => {
+    const visible = $$(".plink:not(.hidden)", proj).length;
+    proj.classList.toggle("hidden", visible === 0);
+    const cnt = $(".project-count", proj);
+    if (cnt) cnt.textContent = visible;
+    if (visible > 0 && activeFilter !== "all") {
+      proj.classList.add("open");
+      const head = $(".project-head", proj); if (head) head.setAttribute("aria-expanded", "true");
+    }
+  });
+}
+
+function renderAbout(){
+  $("#about-title").textContent = CONFIG.about.title || "";
+  $("#about-text").innerHTML = (CONFIG.about.paragraphs || []).map(p => `<p>${bold(p)}</p>`).join("");
+  $("#skills").innerHTML = (CONFIG.about.skills || []).map(s => `
+    <div class="skill-row">
+      <div class="skill-top"><span>${esc(s.name)}</span><span>${s.level}%</span></div>
+      <div class="skill-bar"><div class="skill-fill" data-level="${s.level}"></div></div>
+    </div>`).join("");
+  if (EDIT_MODE) $$("#skills .skill-fill").forEach(f => f.style.width = f.dataset.level + "%");
+}
+
+function renderContact(){
+  const C = CONFIG.contact;
+  $("#contact-title").textContent = C.title || "";
+  $("#contact-subtitle").textContent = C.subtitle || "";
+  $("#contact-cta").innerHTML = (C.buttons || []).map(b =>
+    `<a class="btn ${b.style === "primary" ? "btn-primary" : "btn-ghost"}" href="${esc(b.href)}">${esc(b.label)}</a>`
+  ).join("");
+  $("#contact-direct").innerHTML = (C.links || []).map(l =>
+    `<a class="contact-chip" href="${esc(l.href)}" target="_blank" rel="noopener">${ICONS[l.icon] || ""}${esc(l.label)}</a>`
+  ).join("");
+}
+
+function renderFooter(){
+  $("#footer-copy").textContent = CONFIG.footer.copy || "";
+  $("#footer-socials").innerHTML = (CONFIG.footer.socials || []).map(s =>
+    `<a href="${esc(s.href)}" target="_blank" rel="noopener" aria-label="${esc(s.label)}" title="${esc(s.label)}">${ICONS[s.icon] || ""}</a>`
+  ).join("");
+}
+
+const SECTION_MAP = { hero: "#hero", stats: "#stats", services: "#services", portfolio: "#portfolio", about: "#about", contact: "#contact" };
+function applyVisibility(){
+  Object.entries(SECTION_MAP).forEach(([key, sel]) => {
+    const cfg = CONFIG[key];
+    const el = $(sel);
+    if (el && cfg) el.style.display = cfg.show === false ? "none" : "";
+  });
+}
+
+let io = null;
+function observeReveals(){
+  if (!io) {
+    io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add("visible");
+          $$(".skill-fill", e.target).forEach(f => f.style.width = f.dataset.level + "%");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+  }
+  $$(".reveal:not(.visible)").forEach(el => io.observe(el));
+  if (EDIT_MODE) $$(".reveal").forEach(el => el.classList.add("visible"));
+}
+
+function render(){
+  applyDesign();
+  renderNav(); renderHero(); renderStats(); renderServices();
+  renderPortfolio(); renderAbout(); renderContact(); renderFooter();
+  applyVisibility(); observeReveals();
+}
+
+/* ---------- Делегирование событий портфолио ---------- */
+document.addEventListener("click", e => {
+  if (e.target.closest("a")) return; // клики по ссылкам не трогаем
+  const head = e.target.closest(".project-head");
+  if (head){
+    const proj = head.closest(".project");
+    const open = proj.classList.toggle("open");
+    head.setAttribute("aria-expanded", open);
+    return;
+  }
+  const fbtn = e.target.closest(".filter");
+  if (fbtn){
+    $$(".filter").forEach(b => b.classList.remove("active"));
+    fbtn.classList.add("active");
+    activeFilter = fbtn.dataset.type;
+    applyFilter();
+  }
+});
+
+/* ---------- Тема ---------- */
+const themeBtn = $("#theme-btn");
+function setTheme(t){
+  document.documentElement.dataset.theme = t;
+  themeBtn.textContent = t === "dark" ? "🌙" : "☀️";
+  try { localStorage.setItem("themeManual", t); } catch(e){}
+}
+function initTheme(){
+  let manual = null;
+  try { manual = localStorage.getItem("themeManual"); } catch(e){}
+  const pref = (CONFIG.design || {}).theme || "auto";
+  const sys = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  setTheme(manual || (pref === "auto" ? sys : pref));
+}
+initTheme();
+themeBtn.addEventListener("click", () =>
+  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark"));
+
+/* ---------- Мобильное меню ---------- */
+const burger = $("#burger"), nav = $("#nav");
+burger.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  burger.textContent = open ? "✕" : "☰";
+});
+document.addEventListener("click", e => {
+  if (e.target.closest("#nav a")) { nav.classList.remove("open"); burger.textContent = "☰"; }
+});
+
+/* ---------- Скролл ---------- */
+const header = $("#header"), toTop = $("#to-top");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", scrollY > 12);
+  toTop.classList.toggle("show", scrollY > 600);
+  let current = "";
+  $$("main section[id]").forEach(sec => {
+    if (sec.style.display !== "none" && sec.offsetTop - 140 <= scrollY) current = sec.id;
+  });
+  $$("#nav a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+}, { passive: true });
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* ---------- Первый рендер ---------- */
+render();
+
+/* ╔════════════════════════════════════════════════════════════════════╗
+   ║  ✏️  ВИЗУАЛЬНЫЙ РЕДАКТОР (активен только при ?edit=1)              ║
+   ╚════════════════════════════════════════════════════════════════════╝ */
+if (EDIT_MODE) {
+
+  let saveTimer = null, renderTimer = null;
+  function touch(){
+    clearTimeout(renderTimer);
+    renderTimer = setTimeout(() => { render(); }, 180);
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      try { localStorage.setItem(DRAFT_KEY, JSON.stringify(CONFIG)); }
+      catch(e){ toast("⚠️ Черновик не помещается в память браузера (скорее всего, из-за большого фото). Скачайте content.js!"); }
+    }, 400);
+  }
+  function toast(msg){
+    const t = $("#ed-saved");
+    t.textContent = msg; t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 2600);
+  }
+
+  /* --- хелперы построения форм --- */
+  const mk = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+  function fieldWrap(label, inputEl, hint){
+    const f = mk("div", "efield");
+    if (label) f.appendChild(mk("label", null, esc(label)));
+    if (inputEl) f.appendChild(inputEl);
+    if (hint) f.appendChild(mk("div", "hint", esc(hint)));
+    return f;
+  }
+  function textInput(get, set, opts = {}){
+    const i = mk("input"); i.type = opts.type || "text"; i.value = get() ?? "";
+    if (opts.placeholder) i.placeholder = opts.placeholder;
+    i.addEventListener("input", () => { set(opts.type === "number" ? Number(i.value) : i.value); touch(); });
+    return i;
+  }
+  function textArea(get, set, rows = 3, hint){
+    const t = mk("textarea"); t.rows = rows; t.value = get() ?? "";
+    t.addEventListener("input", () => { set(t.value); touch(); });
+    return fieldWrap(null, t, hint);
+  }
+  function colorInput(get, set){
+    const c = mk("input"); c.type = "color"; c.value = get() || "#7c6cf0";
+    c.addEventListener("input", () => { set(c.value); touch(); });
+    return c;
+  }
+  function selectInput(options, get, set){
+    const s = mk("select");
+    options.forEach(o => { const op = mk("option"); op.value = o[0]; op.textContent = o[1]; s.appendChild(op); });
+    s.value = get();
+    s.addEventListener("change", () => { set(s.value); touch(); });
+    return s;
+  }
+  function checkRow(label, get, set){
+    const l = mk("label", "echeck");
+    const c = mk("input"); c.type = "checkbox"; c.checked = get() !== false;
+    c.addEventListener("change", () => { set(c.checked); touch(); });
+    l.appendChild(c); l.appendChild(mk("span", null, esc(label)));
+    return l;
+  }
+  function listEditor(getArr, itemBuilder, addLabel, newItem){
+    const wrapEl = mk("div");
+    function rebuild(){
+      wrapEl.innerHTML = "";
+      const arr = getArr();
+      arr.forEach((item, idx) => {
+        const box = mk("div", "elist-item");
+        const del = mk("button", "ed-del", "✕");
+        del.title = "Удалить";
+        del.addEventListener("click", () => { arr.splice(idx, 1); touch(); rebuild(); });
+        box.appendChild(del);
+        itemBuilder(box, item, idx, rebuild);
+        wrapEl.appendChild(box);
+      });
+      const add = mk("button", "ed-add", "+ " + esc(addLabel));
+      add.addEventListener("click", () => { getArr().push(newItem()); touch(); rebuild(); });
+      wrapEl.appendChild(add);
+    }
+    rebuild();
+    return wrapEl;
+  }
+  function edSection(icon, title, buildFn, open = false){
+    const d = mk("details"); if (open) d.open = true;
+    d.appendChild(mk("summary", null, `${icon} ${esc(title)}`));
+    const body = mk("div", "ed-section-body");
+    buildFn(body);
+    d.appendChild(body);
+    return d;
+  }
+
+  /* --- построение панелей --- */
+  function buildEditor(){
+    const body = $("#editor-body");
+    body.innerHTML = "";
+
+    /* Дизайн */
+    body.appendChild(edSection("🎨", "Дизайн и цвета", b => {
+      const row = mk("div", "ed-row");
+      row.appendChild(fieldWrap("Основной цвет", colorInput(() => CONFIG.design.accent, v => CONFIG.design.accent = v)));
+      row.appendChild(fieldWrap("Второй цвет", colorInput(() => CONFIG.design.accent2, v => CONFIG.design.accent2 = v)));
+      b.appendChild(row);
+      b.appendChild(fieldWrap("Тема по умолчанию", selectInput([["dark","Тёмная"],["light","Светлая"],["auto","Как в системе"]], () => CONFIG.design.theme, v => CONFIG.design.theme = v)));
+    }, true));
+
+    /* Админка / пароль */
+    body.appendChild(edSection("🔐", "Админка (пароль)", b => {
+      const st = mk("div", "hint", CONFIG.admin.passwordHash
+        ? "✅ Пароль задан. Без него редактор не откроется."
+        : "⚠️ Пароль не задан — редактор может открыть любой, кто добавит ?edit=1 к адресу.");
+      st.style.marginBottom = "14px";
+      st.style.fontSize = "12.8px";
+      b.appendChild(st);
+      const p1 = mk("input"); p1.type = "password"; p1.placeholder = "Новый пароль (мин. 4 символа)"; p1.autocomplete = "new-password";
+      const p2 = mk("input"); p2.type = "password"; p2.placeholder = "Повторите пароль"; p2.autocomplete = "new-password";
+      b.appendChild(fieldWrap("Сменить пароль", p1));
+      b.appendChild(fieldWrap(null, p2));
+      const save = mk("button", "ed-btn primary", "🔐 Сохранить пароль");
+      save.style.cssText += "width:100%;justify-content:center;";
+      save.addEventListener("click", async () => {
+        if (p1.value.length < 4) return toast("⚠️ Пароль должен быть не короче 4 символов");
+        if (p1.value !== p2.value) return toast("⚠️ Пароли не совпадают");
+        CONFIG.admin.passwordHash = await hashPassword(p1.value);
+        p1.value = ""; p2.value = "";
+        touch(); buildEditor();
+        toast("🔐 Пароль сохранён! Скачайте content.js");
+      });
+      b.appendChild(save);
+      if (CONFIG.admin.passwordHash){
+        const del = mk("button", "ed-btn danger", "Убрать пароль");
+        del.style.cssText += "width:100%;justify-content:center;margin-top:8px;";
+        del.addEventListener("click", () => {
+          if (confirm("Убрать защиту паролем?")) { CONFIG.admin.passwordHash = ""; touch(); buildEditor(); toast("Пароль убран"); }
+        });
+        b.appendChild(del);
+      }
+      b.appendChild(fieldWrap("Держать редактор открытым без пароля",
+        selectInput([["30","30 минут"],["120","2 часа"],["480","8 часов"],["10080","7 дней"]],
+          () => String(CONFIG.admin.sessionMinutes ?? 120),
+          v => { CONFIG.admin.sessionMinutes = Number(v); touch(); }),
+        "После ввода правильного пароля редактор не спрашивает его повторно в течение этого времени (в рамках открытой вкладки)."));
+    }));
+
+    /* Фото */
+    body.appendChild(edSection("🖼", "Фото (первый экран)", b => {
+      b.appendChild(fieldWrap("Файл или ссылка", textInput(() => CONFIG.hero.photo.src, v => CONFIG.hero.photo.src = v),
+        "Например: photo.jpg (файл рядом с index.html) или полная ссылка на картинку. Пусто — заглушка с инициалами."));
+      const up = mk("label", "ed-btn ed-file-btn", "📤 Загрузить с компьютера");
+      const fi = mk("input"); fi.type = "file"; fi.accept = "image/*";
+      fi.addEventListener("change", () => {
+        const f = fi.files[0]; if (!f) return;
+        if (f.size > 2 * 1024 * 1024) { if (!confirm("Файл больше 2 МБ — сайт может тормозить. Всё равно встроить?")) return; }
+        const r = new FileReader();
+        r.onload = () => { CONFIG.hero.photo.src = r.result; touch(); buildEditor(); toast("🖼 Фото добавлено! Не забудьте скачать content.js"); };
+        r.readAsDataURL(f);
+      });
+      up.appendChild(fi);
+      b.appendChild(up);
+      const row = mk("div", "ed-row");
+      row.appendChild(fieldWrap("Инициалы (для заглушки)", textInput(() => CONFIG.hero.photo.initials, v => CONFIG.hero.photo.initials = v)));
+      row.appendChild(fieldWrap("Подпись для поисковиков", textInput(() => CONFIG.hero.photo.alt, v => CONFIG.hero.photo.alt = v)));
+      b.appendChild(row);
+      b.appendChild(fieldWrap("Плавающие бейджи у фото", null));
+      b.appendChild(listEditor(() => CONFIG.hero.photo.chips,
+        (box, c) => {
+          const r1 = mk("div", "ed-row");
+          r1.appendChild(fieldWrap("Иконка", textInput(() => c.icon, v => c.icon = v)));
+          r1.appendChild(fieldWrap("Текст", textInput(() => c.text, v => c.text = v)));
+          box.appendChild(r1);
+          box.appendChild(fieldWrap("Позиция", selectInput([["tl","Слева сверху"],["tr","Справа сверху"],["bl","Слева снизу"],["br","Справа снизу"]], () => c.pos, v => c.pos = v)));
+        },
+        "Добавить бейдж", () => ({ icon: "✨", text: "Новый бейдж", pos: "br" })));
+    }));
+
+    /* Меню */
+    body.appendChild(edSection("🧭", "Шапка и меню", b => {
+      b.appendChild(fieldWrap("Логотип (имя)", textInput(() => CONFIG.nav.logo, v => CONFIG.nav.logo = v)));
+      b.appendChild(fieldWrap("Пункты меню", null));
+      b.appendChild(listEditor(() => CONFIG.nav.links,
+        (box, l) => {
+          box.appendChild(fieldWrap("Название", textInput(() => l.label, v => l.label = v)));
+          box.appendChild(fieldWrap("Ссылка (якорь)", textInput(() => l.href, v => l.href = v), "#services, #portfolio, #about, #contact"));
+        },
+        "Добавить пункт", () => ({ label: "Новый раздел", href: "#hero" })));
+    }));
+
+    /* Hero */
+    body.appendChild(edSection("🚀", "Первый экран", b => {
+      b.appendChild(checkRow("Показывать блок", () => CONFIG.hero.show, v => CONFIG.hero.show = v));
+      b.appendChild(fieldWrap("Бейдж над заголовком", textInput(() => CONFIG.hero.badge, v => CONFIG.hero.badge = v)));
+      b.appendChild(fieldWrap("Заголовок", null, "Символ \\n — перенос строки. Всё, что после него, окрасится градиентом."));
+      b.appendChild(textArea(() => CONFIG.hero.title, v => CONFIG.hero.title = v, 2, 'Например: Контент, который\\nпродаёт недвижимость'));
+      b.appendChild(fieldWrap("Роли (через ·)", textInput(() => CONFIG.hero.roles, v => CONFIG.hero.roles = v)));
+      b.appendChild(fieldWrap("Описание", null));
+      b.appendChild(textArea(() => CONFIG.hero.tagline, v => CONFIG.hero.tagline = v, 3));
+      b.appendChild(fieldWrap("Кнопки", null));
+      b.appendChild(listEditor(() => CONFIG.hero.buttons,
+        (box, bt) => {
+          box.appendChild(fieldWrap("Текст кнопки", textInput(() => bt.label, v => bt.label = v)));
+          box.appendChild(fieldWrap("Ссылка", textInput(() => bt.href, v => bt.href = v)));
+          box.appendChild(fieldWrap("Стиль", selectInput([["primary","Яркая (градиент)"],["ghost","Простая"]], () => bt.style, v => bt.style = v)));
+        },
+        "Добавить кнопку", () => ({ label: "Новая кнопка", href: "#contact", style: "ghost" })));
+      b.appendChild(fieldWrap("Факты-плашки", null));
+      b.appendChild(listEditor(() => CONFIG.hero.facts,
+        (box, f) => {
+          const r1 = mk("div", "ed-row");
+          r1.appendChild(fieldWrap("Иконка (эмодзи)", textInput(() => f.icon, v => f.icon = v)));
+          r1.appendChild(fieldWrap("Текст", textInput(() => f.text, v => f.text = v)));
+          box.appendChild(r1);
+        },
+        "Добавить факт", () => ({ icon: "✨", text: "Новый факт" })));
+    }));
+
+    /* Цифры */
+    body.appendChild(edSection("🔢", "Цифры", b => {
+      b.appendChild(checkRow("Показывать блок", () => CONFIG.stats.show, v => CONFIG.stats.show = v));
+      b.appendChild(listEditor(() => CONFIG.stats.items,
+        (box, s) => {
+          const r1 = mk("div", "ed-row");
+          r1.appendChild(fieldWrap("Число", textInput(() => s.num, v => s.num = v)));
+          r1.appendChild(fieldWrap("Подпись", textInput(() => s.label, v => s.label = v)));
+          box.appendChild(r1);
+        },
+        "Добавить цифру", () => ({ num: "0", label: "новая метрика" })));
+    }));
+
+    /* Услуги */
+    body.appendChild(edSection("🛠", "Услуги", b => {
+      b.appendChild(checkRow("Показывать блок", () => CONFIG.services.show, v => CONFIG.services.show = v));
+      b.appendChild(fieldWrap("Надзаголовок", textInput(() => CONFIG.services.tag, v => CONFIG.services.tag = v)));
+      b.appendChild(fieldWrap("Заголовок", textInput(() => CONFIG.services.title, v => CONFIG.services.title = v)));
+      b.appendChild(fieldWrap("Подзаголовок", null));
+      b.appendChild(textArea(() => CONFIG.services.subtitle, v => CONFIG.services.subtitle = v, 2));
+      b.appendChild(listEditor(() => CONFIG.services.items,
+        (box, s) => {
+          box.appendChild(fieldWrap("Иконка (эмодзи)", textInput(() => s.icon, v => s.icon = v)));
+          box.appendChild(fieldWrap("Название услуги", textInput(() => s.title, v => s.title = v)));
+          box.appendChild(fieldWrap("Описание", null));
+          box.appendChild(textArea(() => s.text, v => s.text = v, 2));
+        },
+        "Добавить услугу", () => ({ icon: "✨", title: "Новая услуга", text: "Описание услуги" })));
+    }));
+
+    /* Портфолио */
+    body.appendChild(edSection("💼", "Портфолио", b => {
+      b.appendChild(checkRow("Показывать блок", () => CONFIG.portfolio.show, v => CONFIG.portfolio.show = v));
+      b.appendChild(fieldWrap("Типы материалов (фильтры)", null));
+      b.appendChild(listEditor(() => CONFIG.portfolio.filterTypes,
+        (box, t) => {
+          const r1 = mk("div", "ed-row");
+          r1.appendChild(fieldWrap("Код (лат.)", textInput(() => t.id, v => t.id = v)));
+          r1.appendChild(fieldWrap("Название", textInput(() => t.label, v => t.label = v)));
+          r1.appendChild(fieldWrap("Цвет", colorInput(() => t.color, v => t.color = v)));
+          box.appendChild(r1);
+        },
+        "Добавить тип", () => ({ id: "new", label: "Новый тип", color: "#7c6cf0" })));
+
+      b.appendChild(fieldWrap("Проекты", null));
+      const projWrap = mk("div");
+      function rebuildProjects(){
+        projWrap.innerHTML = "";
+        CONFIG.portfolio.projects.forEach((p, pi) => {
+          const card = mk("div", "ed-proj");
+          const head = mk("div", "ed-proj-head");
+          head.appendChild(mk("b", null, `Проект ${pi + 1}`));
+          const delP = mk("button", "ed-del", "✕"); delP.style.position = "static";
+          delP.title = "Удалить проект";
+          delP.addEventListener("click", () => { if (confirm("Удалить проект целиком?")) { CONFIG.portfolio.projects.splice(pi, 1); touch(); rebuildProjects(); } });
+          head.appendChild(delP);
+          card.appendChild(head);
+          const r1 = mk("div", "ed-row");
+          r1.appendChild(fieldWrap("Название", textInput(() => p.name, v => p.name = v)));
+          r1.appendChild(fieldWrap("Цвет", colorInput(() => p.color, v => p.color = v)));
+          card.appendChild(r1);
+          card.appendChild(fieldWrap("Описание", textInput(() => p.desc, v => p.desc = v)));
+          card.appendChild(fieldWrap("Ссылка на сайт проекта", textInput(() => p.site, v => p.site = v)));
+          card.appendChild(fieldWrap("Работы", null));
+          card.appendChild(listEditor(() => p.items,
+            (box, it) => {
+              const r2 = mk("div", "ed-row");
+              r2.appendChild(fieldWrap("Тип", selectInput(
+                CONFIG.portfolio.filterTypes.filter(t => t.id !== "all").map(t => [t.id, t.label]),
+                () => it.type, v => it.type = v)));
+              box.appendChild(r2);
+              box.appendChild(fieldWrap("Название работы", null));
+              box.appendChild(textArea(() => it.title, v => it.title = v, 2));
+              box.appendChild(fieldWrap("Ссылка", textInput(() => it.url, v => it.url = v)));
+            },
+            "Добавить работу", () => ({ type: "post", title: "Новая работа", url: "https://" })));
+          projWrap.appendChild(card);
+        });
+        const addP = mk("button", "ed-add", "+ Добавить проект");
+        addP.addEventListener("click", () => {
+          CONFIG.portfolio.projects.push({ name: "Новый проект", desc: "Описание", site: "", color: "#7c6cf0", items: [] });
+          touch(); rebuildProjects();
+        });
+        projWrap.appendChild(addP);
+      }
+      rebuildProjects();
+      b.appendChild(projWrap);
+    }));
+
+    /* О себе */
+    body.appendChild(edSection("👤", "О себе", b => {
+      b.appendChild(checkRow("Показывать блок", () => CONFIG.about.show, v => CONFIG.about.show = v));
+      b.appendChild(fieldWrap("Заголовок", textInput(() => CONFIG.about.title, v => CONFIG.about.title = v)));
+      b.appendChild(fieldWrap("Абзацы", null, "**текст** внутри абзаца станет жирным"));
+      b.appendChild(listEditor(() => CONFIG.about.paragraphs,
+        (box, p, idx) => {
+          const t = mk("textarea"); t.rows = 3; t.value = CONFIG.about.paragraphs[idx];
+          t.addEventListener("input", () => { CONFIG.about.paragraphs[idx] = t.value; touch(); });
+          box.appendChild(t);
+        },
+        "Добавить абзац", () => ""));
+      b.appendChild(fieldWrap("Навыки", null));
+      b.appendChild(listEditor(() => CONFIG.about.skills,
+        (box, s) => {
+          const r1 = mk("div", "ed-row");
+          r1.appendChild(fieldWrap("Навык", textInput(() => s.name, v => s.name = v)));
+          r1.appendChild(fieldWrap("Уровень, %", textInput(() => s.level, v => s.level = v, { type: "number" })));
+          box.appendChild(r1);
+        },
+        "Добавить навык", () => ({ name: "Новый навык", level: 80 })));
+    }));
+
+    /* Контакты */
+    body.appendChild(edSection("✉️", "Контакты", b => {
+      b.appendChild(checkRow("Показывать блок", () => CONFIG.contact.show, v => CONFIG.contact.show = v));
+      b.appendChild(fieldWrap("Заголовок", textInput(() => CONFIG.contact.title, v => CONFIG.contact.title = v)));
+      b.appendChild(fieldWrap("Подзаголовок", null));
+      b.appendChild(textArea(() => CONFIG.contact.subtitle, v => CONFIG.contact.subtitle = v, 2));
+      b.appendChild(fieldWrap("Кнопки", null));
+      b.appendChild(listEditor(() => CONFIG.contact.buttons,
+        (box, bt) => {
+          box.appendChild(fieldWrap("Текст", textInput(() => bt.label, v => bt.label = v)));
+          box.appendChild(fieldWrap("Ссылка", textInput(() => bt.href, v => bt.href = v), "mailto:..., tel:+7..., https://..."));
+          box.appendChild(fieldWrap("Стиль", selectInput([["primary","Яркая (градиент)"],["ghost","Простая"]], () => bt.style, v => bt.style = v)));
+        },
+        "Добавить кнопку", () => ({ label: "Новая кнопка", href: "mailto:", style: "ghost" })));
+      b.appendChild(fieldWrap("Ссылки-чипы", null));
+      b.appendChild(listEditor(() => CONFIG.contact.links,
+        (box, l) => {
+          box.appendChild(fieldWrap("Название", textInput(() => l.label, v => l.label = v)));
+          box.appendChild(fieldWrap("Ссылка", textInput(() => l.href, v => l.href = v)));
+          box.appendChild(fieldWrap("Иконка", selectInput([["tg","Telegram"],["vk","VK"],["mail","Email"],["doc","Документ"]], () => l.icon, v => l.icon = v)));
+        },
+        "Добавить ссылку", () => ({ label: "Новая ссылка", href: "https://", icon: "tg" })));
+    }));
+
+    /* Футер */
+    body.appendChild(edSection("📎", "Футер (подвал)", b => {
+      b.appendChild(fieldWrap("Копирайт", textInput(() => CONFIG.footer.copy, v => CONFIG.footer.copy = v)));
+      b.appendChild(fieldWrap("Соцсети", null));
+      b.appendChild(listEditor(() => CONFIG.footer.socials,
+        (box, s) => {
+          box.appendChild(fieldWrap("Название", textInput(() => s.label, v => s.label = v)));
+          box.appendChild(fieldWrap("Ссылка", textInput(() => s.href, v => s.href = v)));
+          box.appendChild(fieldWrap("Иконка", selectInput([["tg","Telegram"],["vk","VK"],["mail","Email"],["doc","Документ"]], () => s.icon, v => s.icon = v)));
+        },
+        "Добавить соцсеть", () => ({ label: "Новая сеть", href: "https://", icon: "tg" })));
+    }));
+  }
+
+  /* --- скачать content.js --- */
+  function downloadContent(){
+    const js = "/* Содержимое сайта. Сгенерировано редактором — можно править вручную. */\n"
+             + "window.SITE_CONTENT = " + JSON.stringify(CONFIG, null, 2).replace(/</g, "\\u003c") + ";\n";
+    const blob = new Blob([js], { type: "text/javascript;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "content.js";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast("💾 content.js скачан! Положите его рядом с index.html");
+  }
+
+  /* --- 🔐 защита паролем --- */
+  const FAILS_KEY = "adminFails_v1";
+  const UNLOCK_KEY = "adminUnlockedAt_v1";
+
+  async function hashPassword(pw){
+    const salted = "moroz-portfolio-v1::" + pw;
+    if (window.crypto && crypto.subtle && crypto.subtle.digest){
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(salted));
+      return "sha256$" + [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+    // запасной вариант (если crypto.subtle недоступен) — некриптостойкий, но пароль в открытом виде не хранится
+    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (let i = 0; i < salted.length; i++){
+      const ch = salted.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return "fb$" + (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
+  }
+  async function verifyPassword(pw){
+    const stored = CONFIG.admin.passwordHash;
+    if (!stored) return true;
+    return (await hashPassword(pw)) === stored;
+  }
+  function isUnlocked(){
+    try {
+      const at = Number(sessionStorage.getItem(UNLOCK_KEY) || 0);
+      return at > 0 && Date.now() - at < (CONFIG.admin.sessionMinutes ?? 120) * 60000;
+    } catch(e){ return false; }
+  }
+  function markUnlocked(){ try { sessionStorage.setItem(UNLOCK_KEY, String(Date.now())); } catch(e){} }
+  function failInfo(){ try { return JSON.parse(localStorage.getItem(FAILS_KEY) || '{"n":0,"until":0}'); } catch(e){ return { n:0, until:0 }; } }
+  function registerFail(){
+    const f = failInfo(); f.n++;
+    if (f.n >= 10) f.until = Date.now() + 5 * 60000;       // 10+ ошибок — блок 5 минут
+    else if (f.n >= 5) f.until = Date.now() + 30000;        // 5+ ошибок — блок 30 секунд
+    try { localStorage.setItem(FAILS_KEY, JSON.stringify(f)); } catch(e){}
+  }
+  function clearFails(){ try { localStorage.removeItem(FAILS_KEY); } catch(e){} }
+
+  const pwOverlay = $("#pw-overlay"), pwInput = $("#pw-input"), pwInput2 = $("#pw-input2"),
+        pwErr = $("#pw-error"), pwTitle = $("#pw-title"), pwText = $("#pw-text"),
+        pwRow2 = $("#pw-row2"), pwStrength = $("#pw-strength"), pwNote = $("#pw-note"),
+        pwSubmit = $("#pw-submit");
+  let pwMode = "unlock";
+
+  function pwShowErr(msg){ pwErr.textContent = msg || ""; }
+
+  function openPwModal(){
+    pwMode = CONFIG.admin.passwordHash ? "unlock" : "setup";
+    if (pwMode === "setup"){
+      pwTitle.textContent = "Придумайте пароль";
+      pwText.textContent = "Пароль ещё не задан. Он защитит редактор и будет храниться только в виде хеша.";
+      pwRow2.style.display = ""; pwStrength.style.display = ""; pwNote.style.display = "";
+      pwSubmit.textContent = "🔐 Задать пароль и войти";
+      pwInput.placeholder = "Новый пароль (мин. 4 символа)";
+      pwInput.autocomplete = "new-password";
+    } else {
+      pwTitle.textContent = "Введите пароль";
+      pwText.textContent = "Редактор сайта защищён паролем.";
+      pwRow2.style.display = "none"; pwStrength.style.display = "none"; pwNote.style.display = "none";
+      pwSubmit.textContent = "Войти в редактор";
+      pwInput.placeholder = "Пароль";
+      pwInput.autocomplete = "current-password";
+    }
+    pwInput.value = ""; pwInput2.value = ""; pwShowErr("");
+    pwOverlay.classList.add("show");
+    setTimeout(() => pwInput.focus(), 80);
+  }
+  function closePw(){ pwOverlay.classList.remove("show"); }
+  function openPanel(){ document.body.classList.add("editor-open"); buildEditor(); }
+  function requestEditor(){ isUnlocked() ? openPanel() : openPwModal(); }
+  function exitEdit(){ location.replace(location.pathname); }
+
+  function updateStrength(){
+    const pw = pwInput.value;
+    let score = 0;
+    if (pw.length >= 4) score++;
+    if (pw.length >= 8) score++;
+    if (/[A-ZА-Я]/.test(pw) && /[a-zа-я]/.test(pw)) score++;
+    if (/[0-9]/.test(pw) || /[^A-Za-zА-Яа-я0-9]/.test(pw)) score++;
+    const bars = $("i", pwStrength);
+    const cls = score <= 1 ? "on-weak" : score <= 2 ? "on-mid" : "on-strong";
+    bars.forEach((b, i) => { b.className = i < score ? cls : ""; });
+  }
+
+  pwSubmit.addEventListener("click", async () => {
+    const f = failInfo();
+    if (f.until > Date.now()){
+      pwShowErr(`Слишком много попыток. Повторите через ${Math.ceil((f.until - Date.now()) / 1000)} с`);
+      return;
+    }
+    const pw = pwInput.value;
+    if (pwMode === "setup"){
+      if (pw.length < 4){ pwShowErr("Минимум 4 символа"); return; }
+      if (pw !== pwInput2.value){ pwShowErr("Пароли не совпадают"); return; }
+      CONFIG.admin.passwordHash = await hashPassword(pw);
+      clearFails(); markUnlocked(); touch(); closePw(); openPanel();
+      toast("🔐 Пароль задан! Скачайте content.js, чтобы сохранить его");
+    } else {
+      if (await verifyPassword(pw)){
+        clearFails(); markUnlocked(); closePw(); openPanel();
+      } else {
+        registerFail();
+        pwShowErr("Неверный пароль");
+        pwInput.value = "";
+        pwInput.classList.remove("shake");
+        void pwInput.offsetWidth;
+        pwInput.classList.add("shake");
+        pwInput.focus();
+      }
+    }
+  });
+  pwInput.addEventListener("input", () => { if (pwMode === "setup") updateStrength(); pwShowErr(""); });
+  pwInput.addEventListener("keydown", e => { if (e.key === "Enter") pwSubmit.click(); });
+  pwInput2.addEventListener("keydown", e => { if (e.key === "Enter") pwSubmit.click(); });
+  $("#pw-eye").addEventListener("click", () => {
+    const show = pwInput.type === "password";
+    pwInput.type = show ? "text" : "password";
+    pwInput2.type = show ? "text" : "password";
+    $("#pw-eye").textContent = show ? "🙈" : "👁";
+    pwInput.focus();
+  });
+  $("#pw-back").addEventListener("click", exitEdit);
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && pwOverlay.classList.contains("show")) exitEdit();
+  });
+
+  /* --- управление панелью --- */
+  $("#edit-fab").addEventListener("click", requestEditor);
+  $("#ed-close").addEventListener("click", () => document.body.classList.remove("editor-open"));
+  $("#ed-download").addEventListener("click", downloadContent);
+  $("#ed-reset").addEventListener("click", () => {
+    if (confirm("Сбросить все изменения к исходному содержимому?")) {
+      try { localStorage.removeItem(DRAFT_KEY); } catch(e){}
+      location.replace(location.pathname + "?edit=1");
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    requestEditor();
+  });
+}
+</script>
+</body>
+</html>
