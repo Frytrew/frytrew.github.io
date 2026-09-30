@@ -12,6 +12,8 @@
    а также меняются прямо в визуальном редакторе)
    ============================================================ */
 :root{
+  --fs: 1;                  /* глобальный масштаб шрифтов (регулируется в админке) */
+  --hero-title-scale: 1;    /* масштаб главного заголовка (регулируется в админке) */
   --accent: #7c6cf0;
   --accent-2: #4ecdc4;
   --accent-grad: linear-gradient(135deg, #7c6cf0 0%, #4ecdc4 100%);
@@ -97,7 +99,7 @@ html[data-theme="light"] .glow{opacity:.10}
 /* ---------- Кнопки ---------- */
 .btn{
   display:inline-flex;align-items:center;gap:8px;
-  padding:13px 26px;border-radius:99px;font-weight:700;font-size:15px;
+  padding:13px 26px;border-radius:99px;font-weight:700;font-size:calc(15px * var(--fs));
   cursor:pointer;border:none;transition:.25s;font-family:var(--font);
 }
 .btn-primary{background:var(--accent-grad);color:#0b0d14;box-shadow:0 8px 24px rgba(124,108,240,.35)}
@@ -110,7 +112,7 @@ html[data-theme="light"] .glow{opacity:.10}
 .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;width:100%}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  padding:7px 16px;border-radius:99px;font-size:13.5px;font-weight:700;
+  padding:7px 16px;border-radius:99px;font-size:calc(13.5px * var(--fs));font-weight:700;
   background:var(--card);border:1px solid var(--border);color:var(--text-muted);
   margin-bottom:24px;
 }
@@ -118,17 +120,17 @@ html[data-theme="light"] .glow{opacity:.10}
 .hero-badge .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;background:#3ddc84;opacity:.35;animation:pulse 1.8s infinite}
 @keyframes pulse{0%{transform:scale(.6);opacity:.5}100%{transform:scale(1.6);opacity:0}}
 .hero h1{
-  font-size:clamp(38px,5.6vw,64px);line-height:1.07;letter-spacing:-.03em;font-weight:800;
+  font-size:calc(clamp(38px,5.6vw,64px) * var(--fs) * var(--hero-title-scale));line-height:1.07;letter-spacing:-.03em;font-weight:800;
   margin-bottom:14px;
 }
 .hero h1 .grad{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-roles{font-size:clamp(16px,2vw,20px);font-weight:700;color:var(--text);margin-bottom:18px;letter-spacing:-.01em}
-.hero-tagline{font-size:clamp(15px,1.7vw,17.5px);color:var(--text-muted);max-width:580px;margin-bottom:32px}
-.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
-.hero-facts{display:flex;flex-wrap:wrap;gap:10px}
+.hero-roles{font-size:calc(clamp(16px,2vw,20px) * var(--fs));font-weight:700;color:var(--text);margin-bottom:18px;letter-spacing:-.01em}
+.hero-tagline{font-size:calc(clamp(15px,1.7vw,17.5px) * var(--fs));color:var(--text-muted);max-width:580px;margin-bottom:32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:0}
+.hero-facts{display:flex;flex-wrap:nowrap;gap:12px;justify-content:center;margin-top:54px}
 .fact{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 16px;border-radius:var(--radius-sm);font-size:14px;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  padding:9px 15px;border-radius:var(--radius-sm);font-size:calc(13.5px * var(--fs));font-weight:600;
   background:var(--card);border:1px solid var(--border);color:var(--text-muted);
 }
 
@@ -188,8 +190,8 @@ body.edit .photo-mono .mono-hint{display:block}
   letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
   background:color-mix(in srgb, var(--accent) 12%, transparent);margin-bottom:16px;
 }
-.section-head h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.02em;line-height:1.15;font-weight:800}
-.section-head p{color:var(--text-muted);margin-top:12px;max-width:640px;font-size:16.5px}
+.section-head h2{font-size:calc(clamp(28px,4vw,42px) * var(--fs));letter-spacing:-.02em;line-height:1.15;font-weight:800}
+.section-head p{color:var(--text-muted);margin-top:12px;max-width:640px;font-size:calc(16.5px * var(--fs))}
 
 /* ---------- Цифры ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -198,8 +200,8 @@ body.edit .photo-mono .mono-hint{display:block}
   padding:28px 24px;text-align:center;transition:.25s;
 }
 .stat:hover{transform:translateY(-4px);border-color:var(--border-strong)}
-.stat-num{font-size:clamp(30px,3.6vw,42px);font-weight:800;letter-spacing:-.02em;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat-label{color:var(--text-muted);font-size:14px;font-weight:600;margin-top:6px}
+.stat-num{font-size:calc(clamp(30px,3.6vw,42px) * var(--fs));font-weight:800;letter-spacing:-.02em;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat-label{color:var(--text-muted);font-size:calc(14px * var(--fs));font-weight:600;margin-top:6px}
 
 /* ---------- Услуги ---------- */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -218,8 +220,8 @@ body.edit .photo-mono .mono-hint{display:block}
   background:color-mix(in srgb, var(--accent) 14%, transparent);
   font-size:24px;margin-bottom:18px;
 }
-.service h3{font-size:18.5px;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
-.service p{color:var(--text-muted);font-size:14.8px}
+.service h3{font-size:calc(18.5px * var(--fs));font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+.service p{color:var(--text-muted);font-size:calc(14.8px * var(--fs))}
 
 /* ---------- Портфолио ---------- */
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
@@ -247,10 +249,10 @@ body.edit .photo-mono .mono-hint{display:block}
   font-weight:800;font-size:19px;color:#fff;letter-spacing:-.02em;
 }
 .project-info{flex:1;min-width:0}
-.project-info h3{font-size:18.5px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.project-info h3 a{color:var(--accent);font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:4px}
+.project-info h3{font-size:calc(18.5px * var(--fs));font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.project-info h3 a{color:var(--accent);font-size:calc(13px * var(--fs));font-weight:700;display:inline-flex;align-items:center;gap:4px}
 .project-info h3 a:hover{text-decoration:underline}
-.project-info p{color:var(--text-muted);font-size:14.3px;margin-top:3px}
+.project-info p{color:var(--text-muted);font-size:calc(14.3px * var(--fs));margin-top:3px}
 .project-count{
   flex:none;padding:5px 12px;border-radius:99px;font-size:12.5px;font-weight:700;
   background:color-mix(in srgb, var(--accent) 13%, transparent);color:var(--accent);
@@ -263,7 +265,7 @@ body.edit .photo-mono .mono-hint{display:block}
 .project-links{padding:4px 28px 26px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .plink{
   display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:var(--radius-sm);
-  background:var(--bg-soft);border:1px solid var(--border);font-size:14.2px;font-weight:600;
+  background:var(--bg-soft);border:1px solid var(--border);font-size:calc(14.2px * var(--fs));font-weight:600;
   color:var(--text);transition:.2s;line-height:1.4;
 }
 html[data-theme="dark"] .plink{background:rgba(255,255,255,.03)}
@@ -275,16 +277,16 @@ html[data-theme="dark"] .plink{background:rgba(255,255,255,.03)}
 
 /* ---------- О себе ---------- */
 .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
-.about-text p{color:var(--text-muted);font-size:16.5px;margin-bottom:16px}
+.about-text p{color:var(--text-muted);font-size:calc(16.5px * var(--fs));margin-bottom:16px}
 .about-text p strong{color:var(--text)}
 .about-card{
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
   padding:30px;position:sticky;top:96px;
 }
-.about-card h3{font-size:17px;font-weight:800;margin-bottom:18px}
+.about-card h3{font-size:calc(17px * var(--fs));font-weight:800;margin-bottom:18px}
 .skill-row{margin-bottom:16px}
 .skill-row:last-child{margin-bottom:0}
-.skill-top{display:flex;justify-content:space-between;font-size:13.8px;font-weight:700;margin-bottom:7px}
+.skill-top{display:flex;justify-content:space-between;font-size:calc(13.8px * var(--fs));font-weight:700;margin-bottom:7px}
 .skill-top span:last-child{color:var(--text-muted);font-weight:600}
 .skill-bar{height:7px;border-radius:99px;background:var(--bg-soft);overflow:hidden}
 html[data-theme="dark"] .skill-bar{background:rgba(255,255,255,.07)}
@@ -300,13 +302,13 @@ html[data-theme="dark"] .skill-bar{background:rgba(255,255,255,.07)}
   background:radial-gradient(600px 240px at 50% -60px, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
   pointer-events:none;
 }
-.contact h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;position:relative}
-.contact p{color:var(--text-muted);max-width:520px;margin:0 auto 32px;font-size:16.5px;position:relative}
+.contact h2{font-size:calc(clamp(26px,4vw,40px) * var(--fs));font-weight:800;letter-spacing:-.02em;margin-bottom:14px;position:relative}
+.contact p{color:var(--text-muted);max-width:520px;margin:0 auto 32px;font-size:calc(16.5px * var(--fs));position:relative}
 .contact-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;position:relative;margin-bottom:36px}
 .contact-direct{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;position:relative}
 .contact-chip{
   display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border-radius:99px;
-  background:var(--bg-soft);border:1px solid var(--border);font-size:14.5px;font-weight:700;
+  background:var(--bg-soft);border:1px solid var(--border);font-size:calc(14.5px * var(--fs));font-weight:700;
   transition:.2s;
 }
 html[data-theme="dark"] .contact-chip{background:rgba(255,255,255,.04)}
@@ -316,7 +318,7 @@ html[data-theme="dark"] .contact-chip{background:rgba(255,255,255,.04)}
 /* ---------- Футер ---------- */
 .footer{border-top:1px solid var(--border);padding:32px 0;margin-top:40px}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.footer-copy{color:var(--text-muted);font-size:13.8px}
+.footer-copy{color:var(--text-muted);font-size:calc(13.8px * var(--fs))}
 .footer-socials{display:flex;gap:10px}
 .footer-socials a{
   width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;
@@ -496,6 +498,7 @@ html[data-theme="dark"] .pw-note{background:rgba(255,255,255,.03)}
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-photo{order:2}
   .photo-frame{max-width:330px}
+  .hero-facts{flex-wrap:wrap;margin-top:40px;gap:10px}
 }
 @media (max-width: 900px){
   .stats{grid-template-columns:repeat(2,1fr)}
@@ -524,6 +527,7 @@ html[data-theme="dark"] .pw-note{background:rgba(255,255,255,.03)}
 @media (max-width: 480px){
   .stats{grid-template-columns:1fr 1fr;gap:12px}
   .hero-cta .btn{width:100%;justify-content:center}
+  .fact{font-size:calc(12.5px * var(--fs));padding:8px 12px}
 }
 @media (prefers-reduced-motion: reduce){
   *{animation:none !important;transition:none !important}
@@ -553,16 +557,18 @@ html[data-theme="dark"] .pw-note{background:rgba(255,255,255,.03)}
 <main>
   <!-- Hero -->
   <section class="hero" id="hero">
-    <div class="container hero-grid">
-      <div class="hero-left">
-        <div class="hero-badge reveal"><span class="pulse"></span><span id="hero-badge-text"></span></div>
-        <h1 class="reveal" id="hero-title"></h1>
-        <div class="hero-roles reveal" id="hero-roles"></div>
-        <p class="hero-tagline reveal" id="hero-tagline"></p>
-        <div class="hero-cta reveal" id="hero-cta"></div>
-        <div class="hero-facts reveal" id="hero-facts"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="hero-badge reveal"><span class="pulse"></span><span id="hero-badge-text"></span></div>
+          <h1 class="reveal" id="hero-title"></h1>
+          <div class="hero-roles reveal" id="hero-roles"></div>
+          <p class="hero-tagline reveal" id="hero-tagline"></p>
+          <div class="hero-cta reveal" id="hero-cta"></div>
+        </div>
+        <div class="hero-photo reveal" id="hero-photo"></div>
       </div>
-      <div class="hero-photo reveal" id="hero-photo"></div>
+      <div class="hero-facts reveal" id="hero-facts"></div>
     </div>
   </section>
 
@@ -697,6 +703,7 @@ const DEFAULT_CONFIG = {
     accent: "#7c6cf0",       // основной цвет
     accent2: "#4ecdc4",      // второй цвет градиента
     theme: "dark",           // "dark" | "light" | "auto" — тема по умолчанию
+    fontScale: 1,            // глобальный размер шрифтов: 1 = 100% (регулируется в админке)
   },
 
   // ─────────────────────── 🔐 ЗАЩИТА РЕДАКТОРА ───────────────────────
@@ -722,13 +729,14 @@ const DEFAULT_CONFIG = {
   // ─────────────────────── ПЕРВЫЙ ЭКРАН (HERO) ───────────────────────
   hero: {
     show: true,
-    badge: "Открыт к новым проектам",
+    badge: "Ищу работу",
     // \n — перенос строки. Часть после \n будет выделена градиентом.
-    title: "Контент, который\nпродаёт недвижимость",
-    roles: "SMM-менеджер · контент-маркетолог · копирайтер",
-    tagline: "Гений, плейбой, филантроп и, поговаривают, неплохой контент-маркетолог. Пишу тексты, снимаю сценарии и веду соцсети проектов в сфере недвижимости.",
+    title: "Делаю контент,\nкоторый продаёт",
+    titleScale: 1,           // размер главного заголовка: 1 = 100% (регулируется в админке)
+    roles: "Копирайтер · контент-маркетолог · SMM",
+    tagline: "Гений, плейбой, филантроп и, поговаривают, неплохой копирайтер",
     buttons: [
-      { label: "📄 Скачать резюме", href: "https://spb.hh.ru/resume/f89af725ff0cd395720039ed1f41494a61416f", style: "primary" },
+      { label: "📄 Ссылка на резюме", href: "https://spb.hh.ru/resume/f89af725ff0cd395720039ed1f41494a61416f", style: "primary" },
       { label: "✉️ Написать мне",   href: "#contact", style: "ghost" },
     ],
     facts: [
@@ -753,10 +761,10 @@ const DEFAULT_CONFIG = {
   stats: {
     show: true,
     items: [
-      { num: "4+",  label: "проекта в портфолио" },
-      { num: "40+", label: "текстов и постов" },
-      { num: "9",   label: "сценариев для видео" },
-      { num: "4",   label: "кейса и статьи на VC" },
+      { num: "10+",  label: "лет в копирайтинге" },
+      { num: "100+", label: "статей и лонгридов" },
+      { num: "10",   label: "разных SMM-проектов" },
+      { num: "5",    label: "кейсов в портфолио" },
     ],
   },
 
@@ -772,7 +780,7 @@ const DEFAULT_CONFIG = {
       { icon: "🎬", title: "Сценарии для видео",    text: "Shorts, Reels и длинные ролики: от хука первых секунд до призыва к действию." },
       { icon: "🧲", title: "Лид-магниты и квизы",   text: "Механики привлечения тёплых лидов: квиз-лендинги, вебинары, гайды." },
       { icon: "📊", title: "Статьи и кейсы",        text: "Экспертные статьи для VC, отраслевых медиа и блогов компаний." },
-      { icon: "📚", title: "Инструкции и скрипты",  text: "Регламенты для отделов продаж и гайды по запуску Telegram-каналов." },
+      { icon: "💻", title: "Сайты и лендинги",  text: "Продающие тексты для сайтов: заголовки, офферы, структура лендингов и квизов, которая доводит посетителя до заявки." },
     ],
   },
 
@@ -879,12 +887,12 @@ const DEFAULT_CONFIG = {
   // ────────────────────────────── О СЕБЕ ─────────────────────────────
   about: {
     show: true,
-    title: "Контент-маркетолог из Санкт-Петербурга",
+    title: "Копирайтер из Санкт-Петербурга",
     // Каждый элемент массива — отдельный абзац. **текст** внутри будет жирным.
     paragraphs: [
-      "Специализируюсь на **недвижимости**: работал с агентствами, застройщиками, загородными посёлками и маркетинговыми агентствами. Знаю, как говорить о квадратных метрах так, чтобы это читали и после чтения — оставляли заявку.",
-      "Веду проекты **под ключ**: контент-стратегия, рубрикатор, тексты постов и статей, сценарии вертикальных видео, лид-магниты и квизы, инструкции для команд продаж.",
-      "**В приоритете долгосрочное сотрудничество** — люблю погружаться в продукт и растить каналы месяцами, а не делать разовые публикации. Готов выполнить тестовое задание.",
+      "В копирайтинге я **более 10 лет**. Работал в маркетинговых агентствах и писал о маркетинге, вёл контент образовательных проектов, разбирался в теме финансов. Была в практике и недвижимость — от застройщиков до загородных посёлков.",
+      "Веду проекты **под ключ**: контент-стратегия, рубрикатор, тексты постов и статей, сценарии вертикальных видео, лид-магниты и квизы, тексты для сайтов и лендингов.",
+      "Быстро погружаюсь в новую нишу и нахожу нужный тон для аудитории. **В приоритете долгосрочное сотрудничество** — люблю растить проекты месяцами, а не делать разовые публикации. Готов выполнить тестовое задание.",
     ],
     skills: [
       { name: "Копирайтинг и тексты",    level: 95 },
@@ -960,6 +968,8 @@ function applyDesign(){
   if (d.accent)  r.style.setProperty("--accent", d.accent);
   if (d.accent2) r.style.setProperty("--accent-2", d.accent2);
   if (d.accent && d.accent2) r.style.setProperty("--accent-grad", `linear-gradient(135deg, ${d.accent} 0%, ${d.accent2} 100%)`);
+  r.style.setProperty("--fs", d.fontScale ?? 1);
+  r.style.setProperty("--hero-title-scale", (CONFIG.hero || {}).titleScale ?? 1);
 }
 
 /* ---------- Рендер всех блоков ---------- */
@@ -1257,6 +1267,22 @@ if (EDIT_MODE) {
     s.addEventListener("change", () => { set(s.value); touch(); });
     return s;
   }
+  function rangeInput(get, set, min, max, step){
+    const w = mk("div");
+    w.style.cssText = "display:flex;align-items:center;gap:10px;";
+    const r = mk("input"); r.type = "range"; r.min = min; r.max = max; r.step = step;
+    r.value = String(Math.round((get() ?? 1) * 100));
+    r.style.cssText = "flex:1;accent-color:var(--accent);cursor:pointer;";
+    const out = mk("b", null, r.value + "%");
+    out.style.cssText = "font-size:12.5px;min-width:40px;text-align:right;";
+    r.addEventListener("input", () => {
+      set(Number(r.value) / 100);
+      out.textContent = r.value + "%";
+      touch();
+    });
+    w.appendChild(r); w.appendChild(out);
+    return w;
+  }
   function checkRow(label, get, set){
     const l = mk("label", "echeck");
     const c = mk("input"); c.type = "checkbox"; c.checked = get() !== false;
@@ -1306,6 +1332,9 @@ if (EDIT_MODE) {
       row.appendChild(fieldWrap("Второй цвет", colorInput(() => CONFIG.design.accent2, v => CONFIG.design.accent2 = v)));
       b.appendChild(row);
       b.appendChild(fieldWrap("Тема по умолчанию", selectInput([["dark","Тёмная"],["light","Светлая"],["auto","Как в системе"]], () => CONFIG.design.theme, v => CONFIG.design.theme = v)));
+      b.appendChild(fieldWrap("Размер шрифта на всём сайте",
+        rangeInput(() => CONFIG.design.fontScale ?? 1, v => { CONFIG.design.fontScale = v; }, 80, 130, 5),
+        "Масштабирует все тексты: заголовки, абзацы, карточки, кнопки. 100% — исходный размер."));
     }, true));
 
     /* Админка / пароль */
@@ -1344,6 +1373,64 @@ if (EDIT_MODE) {
           () => String(CONFIG.admin.sessionMinutes ?? 120),
           v => { CONFIG.admin.sessionMinutes = Number(v); touch(); }),
         "После ввода правильного пароля редактор не спрашивает его повторно в течение этого времени (в рамках открытой вкладки)."));
+    }));
+
+    /* Сохранение на сайт (GitHub) */
+    body.appendChild(edSection("☁️", "Сохранение прямо на сайт (GitHub)", b => {
+      b.appendChild(mk("div", "hint", "Сохраняет изменения сразу в репозиторий — сайт обновится сам через 1–2 минуты, без ручной загрузки файлов. Токен хранится только в вашем браузере и никогда не попадает в content.js.")).style.marginBottom = "14px";
+
+      const tok = mk("input"); tok.type = "password"; tok.placeholder = "github_pat_... (токен GitHub)"; tok.autocomplete = "off";
+      try { tok.value = localStorage.getItem(GH_TOKEN_KEY) || ""; } catch(e){}
+      b.appendChild(fieldWrap("Токен (Personal Access Token)", tok, "Как получить: github.com → аватар → Settings → Developer settings → Fine-grained tokens → Generate new token. Доступ: только этот репозиторий, права: Contents → Read and write."));
+
+      const rep = mk("input"); rep.type = "text"; rep.placeholder = "логин/репозиторий";
+      try { rep.value = localStorage.getItem(GH_REPO_KEY) || detectRepo() || ""; } catch(e){ rep.value = detectRepo(); }
+      const br = mk("input"); br.type = "text"; br.placeholder = "main";
+      try { br.value = localStorage.getItem(GH_BRANCH_KEY) || "main"; } catch(e){ br.value = "main"; }
+      const r1 = mk("div", "ed-row");
+      r1.appendChild(fieldWrap("Репозиторий", rep));
+      r1.appendChild(fieldWrap("Ветка", br));
+      b.appendChild(r1);
+
+      const status = mk("div", "hint", "");
+      status.style.cssText += "min-height:18px;font-size:12.3px;margin-bottom:10px;";
+      b.appendChild(status);
+
+      const save = mk("button", "ed-btn primary", "🚀 Сохранить изменения на сайте");
+      save.style.cssText += "width:100%;justify-content:center;";
+      save.addEventListener("click", async () => {
+        const token = tok.value.trim();
+        if (!token){ status.textContent = "⚠️ Введите токен GitHub"; return; }
+        if (!rep.value.trim()){ status.textContent = "⚠️ Введите репозиторий (логин/название)"; return; }
+        save.disabled = true;
+        const oldText = save.textContent;
+        save.textContent = "⏳ Сохраняю…";
+        status.textContent = "";
+        try {
+          await ghSave(token, rep.value, br.value.trim() || "main");
+          try {
+            localStorage.setItem(GH_TOKEN_KEY, token);
+            localStorage.setItem(GH_REPO_KEY, rep.value.trim());
+            localStorage.setItem(GH_BRANCH_KEY, br.value.trim() || "main");
+          } catch(e){}
+          status.textContent = "✅ Сохранено! Сайт обновится через 1–2 минуты (открывайте с Ctrl+F5).";
+          toast("☁️ Изменения сохранены на сайте!");
+        } catch(err){
+          status.textContent = "❌ " + err.message;
+        }
+        save.disabled = false;
+        save.textContent = oldText;
+      });
+      b.appendChild(save);
+
+      const forget = mk("button", "ed-btn danger", "Забыть токен в этом браузере");
+      forget.style.cssText += "width:100%;justify-content:center;margin-top:8px;";
+      forget.addEventListener("click", () => {
+        try { localStorage.removeItem(GH_TOKEN_KEY); } catch(e){}
+        tok.value = "";
+        toast("Токен удалён из браузера");
+      });
+      b.appendChild(forget);
     }));
 
     /* Фото */
@@ -1394,7 +1481,10 @@ if (EDIT_MODE) {
       b.appendChild(checkRow("Показывать блок", () => CONFIG.hero.show, v => CONFIG.hero.show = v));
       b.appendChild(fieldWrap("Бейдж над заголовком", textInput(() => CONFIG.hero.badge, v => CONFIG.hero.badge = v)));
       b.appendChild(fieldWrap("Заголовок", null, "Символ \\n — перенос строки. Всё, что после него, окрасится градиентом."));
-      b.appendChild(textArea(() => CONFIG.hero.title, v => CONFIG.hero.title = v, 2, 'Например: Контент, который\\nпродаёт недвижимость'));
+      b.appendChild(textArea(() => CONFIG.hero.title, v => CONFIG.hero.title = v, 2, 'Например: Делаю контент,\\nкоторый продаёт'));
+      b.appendChild(fieldWrap("Размер главного заголовка",
+        rangeInput(() => CONFIG.hero.titleScale ?? 1, v => { CONFIG.hero.titleScale = v; }, 55, 120, 1),
+        "Только для большого заголовка первого экрана. Сделайте меньше, если текст выглядит громоздко."));
       b.appendChild(fieldWrap("Роли (через ·)", textInput(() => CONFIG.hero.roles, v => CONFIG.hero.roles = v)));
       b.appendChild(fieldWrap("Описание", null));
       b.appendChild(textArea(() => CONFIG.hero.tagline, v => CONFIG.hero.tagline = v, 3));
@@ -1567,17 +1657,80 @@ if (EDIT_MODE) {
     }));
   }
 
-  /* --- скачать content.js --- */
+  /* --- content.js: общий текст файла --- */
+  function contentJsText(){
+    return "/* Содержимое сайта. Сгенерировано редактором — можно править вручную. */\n"
+         + "window.SITE_CONTENT = " + JSON.stringify(CONFIG, null, 2).replace(/</g, "\\u003c") + ";\n";
+  }
+
+  /* --- 💾 скачать content.js --- */
   function downloadContent(){
-    const js = "/* Содержимое сайта. Сгенерировано редактором — можно править вручную. */\n"
-             + "window.SITE_CONTENT = " + JSON.stringify(CONFIG, null, 2).replace(/</g, "\\u003c") + ";\n";
-    const blob = new Blob([js], { type: "text/javascript;charset=utf-8" });
+    const blob = new Blob([contentJsText()], { type: "text/javascript;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
     a.download = "content.js";
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
     toast("💾 content.js скачан! Положите его рядом с index.html");
+  }
+
+  /* --- ☁️ прямое сохранение на сайт через GitHub API --- */
+  const GH_TOKEN_KEY = "ghToken_v1", GH_REPO_KEY = "ghRepo_v1", GH_BRANCH_KEY = "ghBranch_v1";
+
+  function detectRepo(){
+    try {
+      const h = location.hostname, parts = location.pathname.split("/").filter(Boolean);
+      if (/\.github\.io$/i.test(h)){
+        const owner = h.replace(/\.github\.io$/i, "");
+        const repo = parts[0] || (owner + ".github.io");
+        return owner + "/" + repo;
+      }
+    } catch(e){}
+    return "";
+  }
+  function b64utf8(str){
+    const bytes = new TextEncoder().encode(str);
+    let bin = ""; const CH = 0x8000;
+    for (let i = 0; i < bytes.length; i += CH) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
+    return btoa(bin);
+  }
+  async function ghApi(method, path, token, body){
+    const res = await fetch("https://api.github.com" + path, {
+      method,
+      headers: Object.assign(
+        { "Authorization": "Bearer " + token, "Accept": "application/vnd.github+json" },
+        body ? { "Content-Type": "application/json" } : {}
+      ),
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    let data = null;
+    try { data = await res.json(); } catch(e){}
+    return { ok: res.ok, status: res.status, data };
+  }
+  function ghErr(res){
+    const msg = (res.data && res.data.message) || "";
+    if (res.status === 401 || res.status === 403) return new Error("GitHub не принял токен. Проверьте токен и права Contents → Read and write. " + msg);
+    if (res.status === 404) return new Error("Репозиторий или файл не найден / у токена нет доступа. " + msg);
+    if (res.status === 409) return new Error("Файл изменился параллельно — нажмите «Сохранить» ещё раз.");
+    return new Error("Ошибка GitHub (" + res.status + "). " + msg);
+  }
+  async function ghSave(token, repoFull, branch){
+    const m = String(repoFull).trim().match(/^([^/\s]+)\/([^/\s]+)$/);
+    if (!m) throw new Error("Репозиторий указывается в формате логин/название");
+    const path = "/repos/" + m[1] + "/" + m[2] + "/contents/content.js";
+    let sha;
+    const cur = await ghApi("GET", path + "?ref=" + encodeURIComponent(branch), token);
+    if (cur.ok) sha = cur.data.sha;
+    else if (cur.status !== 404) throw ghErr(cur);
+    const body = {
+      message: "Обновление контента сайта через редактор",
+      content: b64utf8(contentJsText()),
+      branch,
+    };
+    if (sha) body.sha = sha;
+    const res = await ghApi("PUT", path, token, body);
+    if (!res.ok) throw ghErr(res);
+    return res.data;
   }
 
   /* --- 🔐 защита паролем --- */
